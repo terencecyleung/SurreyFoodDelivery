@@ -8,10 +8,43 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="t27.surreyfooddeliveryapp.Welcome">
+    tools:context="t27.surreyfooddeliveryapp.WelcomeActivity">
 
     <TextView
+        android:text="Surrey Food Delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textSize="30dp"
+        android:id="@+id/title"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Login"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="22dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Sign Up"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/signupButton"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Guest"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/guestButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/signupButton"
+        android:layout_marginBottom="12dp" />
+
+
 </RelativeLayout>

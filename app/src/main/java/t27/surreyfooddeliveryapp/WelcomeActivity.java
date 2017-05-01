@@ -3,7 +3,7 @@ package t27.surreyfooddeliveryapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Welcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

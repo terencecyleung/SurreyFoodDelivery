@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/sfd"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_below="@id/logo"
         android:layout_marginTop="178dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -75,5 +76,13 @@
         android:layout_below="@id/login"
         android:layout_alignStart="@+id/password_input"
         android:layout_alignEnd="@+id/login" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:id="@+id/logo"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/email" />
 
 </RelativeLayout>

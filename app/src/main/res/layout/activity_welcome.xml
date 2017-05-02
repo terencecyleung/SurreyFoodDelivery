@@ -9,7 +9,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#b3c4ef"
     tools:context="t27.surreyfooddeliveryapp.WelcomeActivity">
+
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        android:id="@+id/logo"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_alignStart="@+id/loginButton" />
 
     <TextView
         android:text="Surrey Food Delivery"
@@ -17,17 +28,21 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:id="@+id/title"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
 
     <Button
         android:text="Login"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/loginButton"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/title"
-        android:layout_marginTop="22dp"
-        android:layout_centerHorizontal="true" />
+        android:background="#ffffff"
+        android:layout_alignStart="@+id/signupButton" />
 
     <Button
         android:text="Sign Up"
@@ -35,26 +50,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/signupButton"
         android:layout_marginTop="22dp"
+        android:background="#ffffff"
         android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Guest"
         android:layout_width="200dp"
+        android:background="#ffffff"
         android:layout_height="wrap_content"
         android:id="@+id/guestButton"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/signupButton"
         android:layout_alignStart="@+id/signupButton"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginTop="19dp" />
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo"
-        android:id="@+id/imageView2"
-        android:layout_above="@+id/title"
-        android:layout_alignStart="@+id/loginButton"
-        android:layout_marginBottom="46dp" />
 
 
 </RelativeLayout>

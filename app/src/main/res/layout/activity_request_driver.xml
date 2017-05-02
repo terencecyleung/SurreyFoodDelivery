@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="t27.surreyfooddeliveryapp.RequestDriverActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--logo and title-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <LinearLayout
+                android:layout_width="270dp"
+                android:layout_height="50dp"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/restaurant_logo_imageview"
+                    android:layout_width="52dp"
+                    android:layout_height="fill_parent"
+                    android:adjustViewBounds="true"
+                    android:gravity="start"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/restaurant_logoTitle_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="Request Driver"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <!--end logo and title-->
+
+
+        <!--restaurant name-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_name_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Restaurant Name*"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_name_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start"
+                    android:inputType="text" />
+            </LinearLayout>
+            <!--end resta name-->
+
+            <!--resta phone #-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_phone_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Restaurant Phone*"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_phone_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start"
+                    android:inputType="phone" />
+            </LinearLayout>
+            <!--end resta phone #-->
+
+            <!--Resta email-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_email_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Restaurant Email"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_email_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+            <!--end email-->
+
+            <!--restaurant address(pickup location)-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/cust_order_address_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Restaurant Address*(pick-up)"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_address_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start" />
+            </LinearLayout>
+            <!--end restaurant address(pickup location)-->
+
+            <!--space in the middle1-->
+            <View
+                android:id="@+id/anchor1"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true" />
+            <!--end   space in the middle1-->
+
+            <!--estimated pickup time-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_estimatedTime_start_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Ready for pick-up in:"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_estimatedTime_edittext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start"
+                    android:inputType="number" />
+
+
+                <TextView
+                    android:id="@+id/restaurant_estimatedTime_end_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="*minutes"
+                    android:textSize="@dimen/register_font_size" />
+            </LinearLayout>
+            <!--end estimated pickup time-->
+
+            <!--space in the middle2-->
+            <View
+                android:id="@+id/anchor2"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true" />
+            <!--end   space in the middle1-->
+
+
+            <!--customer name-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_custname_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Customer Name*"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_custname_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start" />
+            </LinearLayout>
+            <!--end cust name-->
+
+            <!--customer location-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_custlocation_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Customer Location*(drop-off)"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_custlocation_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start" />
+            </LinearLayout>
+            <!--end cust location-->
+
+            <!--customer phone-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/restaurant_custphone_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Customer Phone*"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/restaurant_custphone_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start"
+                    android:inputType="phone" />
+            </LinearLayout>
+            <!--end cust phone-->
+
+            <!--detail-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/cust_order_detail_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Detail*"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/cust_order_detail_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLines="10"
+                    android:minHeight="100dp"
+                    android:minLines="4"
+                    android:scrollbars="vertical"
+
+                    />
+            </LinearLayout>
+            <!--end detail-->
+
+            <!--date and time-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/cust_order_time_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Date and Time"
+                    android:textSize="@dimen/register_font_size" />
+
+                <EditText
+                    android:id="@+id/cust_order_time_edittext"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background"
+                    android:gravity="start"
+                    android:inputType="datetime"
+                    android:text="Right away" />
+            </LinearLayout>
+            <!--end date and time-->
+
+            <!--space on bottom-->
+            <View
+                android:id="@+id/anchor3"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true" />
+            <!--end   space on bottom-->
+
+        </LinearLayout>
+
+
+        <!--submit button-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/restaurant_order_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Request driver" />
+        </LinearLayout>
+        <!--end submit button-->
+
+    </LinearLayout>
+
+</ScrollView>

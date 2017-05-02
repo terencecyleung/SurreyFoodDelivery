@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b3c4ef"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="t27.surreyfooddeliveryapp.HomeActivity">
+
+    <!--header view-->
+    <LinearLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.80"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:adjustViewBounds="true"
+                android:gravity="start"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="center"
+                android:text="Surrey Food Delivery"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.20"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/guesticon" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <!--end header-->
+
+    <!--body-->
+    <ScrollView
+        android:id="@+id/scrollablContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footerView"
+        android:layout_below="@+id/headerView">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Company info"
+                android:textAlignment="textStart" />
+
+        </LinearLayout>
+    </ScrollView>
+    <!--end body-->
+
+    <!--footer-->
+    <LinearLayout
+        android:id="@+id/footerView"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <!--order button-->
+        <!--to be replace with 1 button later-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_customer_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:layout_marginRight="3dp"
+                android:text="Order Now&#10;(Customer)" />
+
+            <Button
+                android:id="@+id/button_restaurant_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp"
+                android:background="#ffffff"
+                android:text="Order Now&#10;(Restaurant)" />
+        </LinearLayout>
+        <!--end order button-->
+
+        <TextView
+            android:id="@+id/businesshour_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_customer_order"
+            android:layout_centerHorizontal="true"
+            android:text="Business hours: 9:00AM - 11:00PM"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/phonenumber_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/businesshour_textview"
+            android:layout_centerHorizontal="true"
+            android:text="604-783-3370"
+            android:textAlignment="center" />
+
+        <!--payment options-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/loginButton"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/paymentoptions" />
+
+        <!--end payment options-->
+
+    </LinearLayout>
+    <!--end footer-->
+</RelativeLayout>

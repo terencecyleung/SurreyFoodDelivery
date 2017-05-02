@@ -20,6 +20,7 @@
         <activity android:name=".CustomerOrderActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".RequestDriverActivity"></activity>
     </application>
 
 </manifest>

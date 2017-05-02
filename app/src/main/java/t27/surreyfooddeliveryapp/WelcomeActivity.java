@@ -23,4 +23,9 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent fromWelcomeToRegister = new Intent(this,RegisterActivity.class);
         startActivity(fromWelcomeToRegister);
     }
+
+    public void guest_click(View view) {
+        Intent fromWelcomeToHome_guest = new Intent(this,HomeActivity.class);
+        startActivity(fromWelcomeToHome_guest);
+    }
 }

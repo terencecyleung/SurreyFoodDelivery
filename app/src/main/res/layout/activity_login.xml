@@ -58,6 +58,7 @@
 
     <Button
         android:text="Login"
+        android:onClick="login_registered_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/login"

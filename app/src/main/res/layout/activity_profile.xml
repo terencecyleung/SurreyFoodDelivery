@@ -61,7 +61,8 @@
         android:id="@+id/edit_profile"
         android:layout_marginBottom="20dp"
         android:layout_above="@+id/current_order"
-        android:layout_alignStart="@+id/email" />
+        android:layout_alignStart="@+id/current_order"
+        android:layout_alignEnd="@+id/current_order" />
 
     <Button
         android:text="Logout"
@@ -69,16 +70,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/logout"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:layout_alignStart="@+id/current_order"
+        android:layout_alignEnd="@+id/current_order" />
 
     <Button
         android:text="Current Order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/logout"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:id="@+id/current_order" />
+        android:id="@+id/current_order"
+        android:layout_above="@+id/logout"
+        android:layout_alignStart="@+id/profile_img"
+        android:layout_alignEnd="@+id/profile_img" />
 
 </RelativeLayout>

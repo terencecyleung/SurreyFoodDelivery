@@ -17,8 +17,9 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".CustomerOrderActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".CustomerOrderActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".EditProfileActivity"></activity>
     </application>
 
 </manifest>

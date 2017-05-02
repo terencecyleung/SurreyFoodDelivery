@@ -16,10 +16,11 @@
     <LinearLayout
         android:id="@+id/headerView"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/header_height"
         android:layout_alignParentTop="true"
         android:orientation="horizontal">
 
+        <!--logo-->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -29,8 +30,8 @@
             android:weightSum="1">
 
             <ImageView
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:adjustViewBounds="true"
                 android:gravity="start"
                 android:scaleType="fitStart"
@@ -46,8 +47,9 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
+        <!--end logo-->
 
-
+        <!--profile icon-->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -56,12 +58,12 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/guesticon" />
         </LinearLayout>
-
+        <!--end profile icon-->
 
     </LinearLayout>
     <!--end header-->
@@ -72,7 +74,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/footerView"
-        android:layout_below="@+id/headerView">
+        android:layout_below="@+id/headerView"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:id="@+id/content"
@@ -81,12 +85,89 @@
             android:layout_margin="5dp"
             android:orientation="vertical">
 
+            <!--services-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="Company info"
+                android:text="Services"
+                android:textAlignment="textStart"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/services" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/service_description"
                 android:textAlignment="textStart" />
+            <!--end services-->
+
+            <!--delivery charges-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Delivery charges"
+                android:textAlignment="textStart"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/deliverycharge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/delivery_charge_description"
+                android:textAlignment="textStart" />
+            <!--end delivery charges-->
+
+            <!--other delivery-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Other Delivery"
+                android:textAlignment="textStart"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/surreyfooddelivery" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/other_delivery_description"
+                android:textAlignment="textStart" />
+            <!--end other delivery-->
 
         </LinearLayout>
     </ScrollView>
@@ -112,17 +193,17 @@
                 android:id="@+id/button_customer_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:background="#ffffff"
-                android:layout_marginRight="3dp"
                 android:text="Order Now&#10;(Customer)" />
 
             <Button
                 android:id="@+id/button_restaurant_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="3dp"
+                android:layout_weight="1"
                 android:background="#ffffff"
                 android:text="Order Now&#10;(Restaurant)" />
         </LinearLayout>
@@ -134,7 +215,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/button_customer_order"
             android:layout_centerHorizontal="true"
-            android:text="Business hours: 9:00AM - 11:00PM"
+            android:text="Business hours: 6:00AM - 12:00PM"
             android:textAlignment="center" />
 
         <TextView

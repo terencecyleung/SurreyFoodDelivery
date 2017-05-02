@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SurreyFoodDeliveryApp</string>
+    <string name="service_description">We Deliver Fast food or pick up the food from the restaurant of you choice. Restaurants included are McDonalds, Wendys , Burgerking , Nandos and more. Delivery available based upon requested store hours.</string>
+    <string name="delivery_charge_description">$10 minimum charge for one stop shop and two Items at most. Time - give us 40 minutes to deliver it to you.</string>
+    <string name="other_delivery_description">Medication , smokes - Laundry Pickup and drop off, other small Item delivery and pick up.</string>
 </resources>

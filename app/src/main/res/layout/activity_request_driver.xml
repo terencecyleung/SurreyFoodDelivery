@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b3c4ef"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="t27.surreyfooddeliveryapp.RequestDriverActivity">
 
     <LinearLayout
@@ -11,45 +16,60 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--logo and title-->
+        <!--header view-->
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="270dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.80"
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
                 <ImageView
-                    android:id="@+id/restaurant_logo_imageview"
                     android:layout_width="52dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="52dp"
                     android:adjustViewBounds="true"
                     android:gravity="start"
                     android:scaleType="fitStart"
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
-                    android:id="@+id/restaurant_logoTitle_textview"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="center"
-                    android:text="Request Driver"
-                    android:textSize="20sp" />
+                    android:text="Surrey Food Delivery"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.20"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:adjustViewBounds="true"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/guesticon" />
             </LinearLayout>
 
 
         </LinearLayout>
-        <!--end logo and title-->
+        <!--end header-->
 
 
         <!--restaurant name-->

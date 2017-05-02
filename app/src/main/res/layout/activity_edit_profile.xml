@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="t27.surreyfooddeliveryapp.EditProfileActivity">
 
+    <!-- Name -->
     <TextView
         android:text="Name"
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
+    <!-- Phone number -->
     <TextView
         android:text="Phone Number"
         android:layout_width="wrap_content"
@@ -49,6 +51,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
+    <!-- Address -->
     <TextView
         android:text="Address"
         android:layout_width="wrap_content"
@@ -69,6 +72,7 @@
         android:id="@+id/edit_address"
         android:layout_alignParentEnd="true" />
 
+    <!-- Email -->
     <TextView
         android:text="Email"
         android:layout_width="wrap_content"
@@ -89,6 +93,7 @@
         android:text="some@email.com"
         android:layout_alignParentEnd="true" />
 
+    <!-- Password -->
     <TextView
         android:text="Password"
         android:layout_width="wrap_content"
@@ -108,6 +113,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:text="Confirm Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm_pass"
+        android:layout_below="@+id/edit_pass"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,14 +131,7 @@
         android:id="@+id/edit_confirm_pass"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:text="Confirm Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/confirm_pass"
-        android:layout_below="@+id/edit_pass"
-        android:layout_alignParentStart="true" />
-
+    <!-- Save Button -->
     <Button
         android:text="Save"
         android:layout_width="wrap_content"

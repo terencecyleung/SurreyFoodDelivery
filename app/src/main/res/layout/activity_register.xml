@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     tools:context="t27.surreyfooddeliveryapp.RegisterActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
 
     <!--logo and title-->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1">
 
 
@@ -37,12 +45,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:ems="10"
-                android:textSize="20dp"
-                android:text="Surrey Food Delivery" />
+                android:gravity="center"
+                android:text="Surrey Food Delivery"
+                android:textSize="20dp" />
         </LinearLayout>
-
 
 
     </LinearLayout>
@@ -51,10 +58,10 @@
 
     <!--email-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
@@ -62,24 +69,26 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textSize="@dimen/register_font_size"
-            android:text="email*" />
+            android:text="email*"
+            android:textSize="@dimen/register_font_size" />
 
         <EditText
             android:id="@+id/email_et"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@android:drawable/editbox_background" />
+            android:background="@android:drawable/editbox_background"
+            android:gravity="start" />
     </LinearLayout>
     <!--end email-->
 
+
+
     <!--password-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
@@ -87,24 +96,24 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textSize="@dimen/register_font_size"
-            android:text="Password*" />
+            android:text="Password*"
+            android:textSize="@dimen/register_font_size" />
 
         <EditText
             android:id="@+id/password_et"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@android:drawable/editbox_background" />
+            android:background="@android:drawable/editbox_background"
+            android:gravity="start" />
     </LinearLayout>
     <!--end password-->
 
     <!--password2-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
@@ -112,15 +121,15 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textSize="@dimen/register_font_size"
-            android:text="Enter password again*" />
+            android:text="Enter password again*"
+            android:textSize="@dimen/register_font_size" />
 
         <EditText
             android:id="@+id/password2_et"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
-            android:gravity="center" />
+            android:gravity="start" />
     </LinearLayout>
     <!--end password2-->
 
@@ -134,10 +143,10 @@
 
     <!--Name-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
@@ -145,24 +154,24 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textSize="@dimen/register_font_size"
-            android:text="Name*" />
+            android:text="Name*"
+            android:textSize="@dimen/register_font_size" />
 
         <EditText
             android:id="@+id/name_et"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@android:drawable/editbox_background" />
+            android:background="@android:drawable/editbox_background"
+            android:gravity="start" />
     </LinearLayout>
     <!--end password2-->
 
     <!--phone-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
@@ -170,24 +179,24 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textSize="@dimen/register_font_size"
-            android:text="Phone*" />
+            android:text="Phone*"
+            android:textSize="@dimen/register_font_size" />
 
         <EditText
             android:id="@+id/phone_et"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@android:drawable/editbox_background" />
+            android:background="@android:drawable/editbox_background"
+            android:gravity="start" />
     </LinearLayout>
     <!--end phone-->
 
     <!--Address-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
@@ -195,17 +204,57 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textSize="@dimen/register_font_size"
-            android:text="address" />
+            android:text="address"
+            android:textSize="@dimen/register_font_size" />
 
         <EditText
             android:id="@+id/address_et"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@android:drawable/editbox_background" />
+            android:background="@android:drawable/editbox_background"
+            android:gravity="start" />
     </LinearLayout>
     <!--end Address-->
+
+    <!--radio group -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!--customer radio buttons-->
+            <RadioButton
+                android:id="@+id/customer_register_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customer"
+                android:checked="true"
+                />
+
+            <!--restaurant radio buttons-->
+            <RadioButton
+                android:id="@+id/restaurant_register_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Restaurant" />
+
+
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <!--end radio group -->
 
     <!--space on bottom-->
     <View
@@ -217,10 +266,10 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <Button
@@ -231,12 +280,7 @@
 
     </LinearLayout>
 
+    </LinearLayout>
 
 
-
-
-
-
-
-
-</LinearLayout>
+</ScrollView>

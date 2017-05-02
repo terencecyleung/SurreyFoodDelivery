@@ -55,6 +55,15 @@
         android:layout_centerHorizontal="true" />
 
     <Button
+        android:text="Edit Profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_profile"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/current_order"
+        android:layout_alignStart="@+id/email" />
+
+    <Button
         android:text="Logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,12 +73,12 @@
         android:layout_marginBottom="30dp" />
 
     <Button
-        android:text="Edit Profile"
+        android:text="Current Order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_profile"
+        android:layout_above="@id/logout"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:layout_above="@+id/logout"
-        android:layout_alignStart="@+id/email" />
+        android:id="@+id/current_order" />
 
 </RelativeLayout>

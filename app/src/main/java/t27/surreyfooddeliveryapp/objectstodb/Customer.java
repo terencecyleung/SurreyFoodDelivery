@@ -1,4 +1,4 @@
-package t27.surreyfooddeliveryapp;
+package t27.surreyfooddeliveryapp.objectstodb;
 
 public class Customer {
     private String email;

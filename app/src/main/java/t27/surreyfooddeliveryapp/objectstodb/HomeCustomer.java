@@ -1,6 +1,8 @@
-package t27.surreyfooddeliveryapp;
+package t27.surreyfooddeliveryapp.objectstodb;
 
-public class HomeCustomer extends Customer{
+import t27.surreyfooddeliveryapp.objectstodb.Customer;
+
+public class HomeCustomer extends Customer {
 
     public HomeCustomer(String email, String password,String name, String number, String address){
         super(email, password, name, number, address);

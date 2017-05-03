@@ -44,7 +44,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:text="Surrey Food Delivery"
-                android:textColor="#000000"
+                android:textColor="@color/colorHeaderText"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -62,7 +62,7 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/guesticon" />
+                app:srcCompat="@drawable/guesticon_black" />
         </LinearLayout>
         <!--end profile icon-->
 
@@ -94,6 +94,7 @@
                 android:text="Services"
                 android:textAlignment="textStart"
                 android:textSize="16dp"
+                android:textColor="@color/colorTitleText"
                 android:textStyle="bold" />
 
             <ImageView
@@ -107,6 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:textColor="@color/colorBodyText"
                 android:layout_margin="5dp"
                 android:text="@string/service_description"
                 android:textAlignment="textStart" />
@@ -119,6 +121,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Delivery charges"
                 android:textAlignment="textStart"
+                android:textColor="@color/colorTitleText"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -133,6 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:textColor="@color/colorBodyText"
                 android:layout_margin="5dp"
                 android:text="@string/delivery_charge_description"
                 android:textAlignment="textStart" />
@@ -145,6 +149,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Other Delivery"
                 android:textAlignment="textStart"
+                android:textColor="@color/colorTitleText"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -159,6 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:textColor="@color/colorBodyText"
                 android:layout_margin="5dp"
                 android:text="@string/other_delivery_description"
                 android:textAlignment="textStart" />
@@ -190,7 +196,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="@color/colorButtonBackground"
+                android:textColor="@color/colorButtonText"
                 android:onClick="customer_order_click"
                 android:text="Order Now&#10;(Customer)" />
 
@@ -200,7 +207,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="@color/colorButtonBackground"
+                android:textColor="@color/colorButtonText"
                 android:onClick="restaurant_order_click"
                 android:text="Order Now&#10;(Restaurant)" />
         </LinearLayout>

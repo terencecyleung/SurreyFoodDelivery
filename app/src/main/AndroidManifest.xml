@@ -19,6 +19,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".CustomerOrderActivity" />
         <activity android:name=".CurrentOrderActivity"></activity>
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>

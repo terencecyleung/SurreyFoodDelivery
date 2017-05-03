@@ -232,6 +232,7 @@
                     android:gravity="start"
                     android:inputType="datetime"
                     android:text="Right Away" />
+
             </LinearLayout>
             <!--end date and time-->
 
@@ -257,10 +258,11 @@
 
             <Button
                 android:id="@+id/button_order_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:onClick="cust_placeOrder_click"
                 android:text=" Place order " />
+
         </LinearLayout>
         <!--end submit button-->
 

@@ -4,6 +4,7 @@
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAppBackground"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,6 +15,7 @@
         android:id="@+id/profile_img"
         android:layout_width="170dp"
         android:layout_height="170dp"
+        android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/users" />
@@ -47,34 +49,43 @@
 
     <Button
         android:id="@+id/edit_profile"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorButtonBackground"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/current_order"
+        android:layout_below="@+id/email"
         android:layout_alignEnd="@+id/current_order"
         android:layout_alignStart="@+id/current_order"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="60dp"
         android:onClick="editProfile_click"
         android:text="Edit Profile" />
 
     <Button
         android:id="@+id/logout"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorButtonBackground"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/current_order"
-        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/current_order"
-        android:layout_marginBottom="30dp"
+        android:layout_below="@id/current_order"
+        android:layout_marginTop="20dp"
         android:onClick="logout_click"
         android:text="Logout" />
 
     <Button
         android:id="@+id/current_order"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorButtonBackground"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/logout"
+        android:layout_below="@+id/edit_profile"
         android:layout_alignEnd="@+id/profile_img"
         android:layout_alignStart="@+id/profile_img"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:onClick="current_order_click"
         android:text="Current Order" />
 
@@ -84,6 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/name"
         android:layout_below="@+id/name"
+        android:layout_marginTop="5dp"
         android:text="778-123-1234" />
 
 </RelativeLayout>

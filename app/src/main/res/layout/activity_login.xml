@@ -23,6 +23,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/logo"
         android:id="@+id/logo"
         android:layout_alignParentTop="true"
@@ -53,7 +54,7 @@
         android:id="@+id/sfd"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:layout_below="@id/logo"
-        android:layout_marginTop="178dp"
+        android:layout_marginTop="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 

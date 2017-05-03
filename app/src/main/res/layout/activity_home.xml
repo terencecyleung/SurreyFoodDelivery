@@ -44,7 +44,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:text="Surrey Food Delivery"
-                android:textColor="@color/colorTitleText"
+                android:textColor="#000000"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -93,7 +93,6 @@
                 android:layout_centerHorizontal="true"
                 android:text="Services"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorTitleText"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -118,10 +117,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
                 android:text="Delivery charges"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorTitleText"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -146,9 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
                 android:text="Other Delivery"
-                android:textColor="@color/colorTitleText"
                 android:textAlignment="textStart"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -195,10 +190,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
                 android:layout_weight="1"
-                android:background="@color/colorButtonBackground"
-                android:text="Order Now&#10;(Customer)"
-                android:textColor="@color/colorButtonText"
-                android:textStyle="bold" />
+                android:background="#ffffff"
+                android:onClick="customer_order_click"
+                android:text="Order Now&#10;(Customer)" />
 
             <Button
                 android:id="@+id/button_restaurant_order"
@@ -206,10 +200,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1"
-                android:background="@color/colorButtonBackground"
-                android:text="Request Driver&#10;(Restaurant)"
-                android:textColor="@color/colorButtonText"
-                android:textStyle="bold" />
+                android:background="#ffffff"
+                android:onClick="restaurant_order_click"
+                android:text="Order Now&#10;(Restaurant)" />
         </LinearLayout>
         <!--end order button-->
 

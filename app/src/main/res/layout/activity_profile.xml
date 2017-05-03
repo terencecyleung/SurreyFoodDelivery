@@ -49,6 +49,9 @@
 
     <Button
         android:id="@+id/edit_profile"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorButtonBackground"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/current_order"
@@ -60,6 +63,9 @@
 
     <Button
         android:id="@+id/logout"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorButtonBackground"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/current_order"
@@ -71,6 +77,9 @@
 
     <Button
         android:id="@+id/current_order"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorButtonBackground"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/logout"

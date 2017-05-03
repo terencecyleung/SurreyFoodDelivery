@@ -23,11 +23,13 @@ public class ProfileActivity extends AppCompatActivity {
         //TODo login out function
 
         Intent from_profile_to_logout = new Intent(this,WelcomeActivity.class);
+        from_profile_to_logout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(from_profile_to_logout);
     }
 
     public void current_order_click(View view) {
         Intent from_profile_to_currentorder = new Intent(this,CurrentOrderActivity.class);
+        from_profile_to_currentorder.putExtra("caller_activity", "ProfileActivity");
         startActivity(from_profile_to_currentorder);
     }
 }

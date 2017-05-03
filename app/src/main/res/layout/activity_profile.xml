@@ -10,91 +10,115 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="t27.surreyfooddeliveryapp.ProfileActivity">
 
-    <ImageView
-        android:id="@+id/profile_img"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/users" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="3dp">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profile_img"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Homer Simpson" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/edit_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/phone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="Address" />
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/users" />
 
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_address"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="email@email.com" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_img"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Homer Simpson" />
 
-    <Button
-        android:id="@+id/edit_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/current_order"
-        android:layout_alignStart="@+id/current_order"
-        android:layout_below="@+id/email"
-        android:layout_marginTop="40dp"
-        android:background="@color/colorButtonBackground"
-        android:onClick="editProfile_click"
-        android:text="Edit Profile"
-        android:textColor="@color/colorButtonText"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/edit_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phone"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Address" />
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/current_order"
-        android:layout_alignStart="@+id/current_order"
-        android:layout_below="@id/current_order"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorButtonBackground"
-        android:onClick="logout_click"
-        android:text="Logout"
-        android:textColor="@color/colorButtonText"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_address"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="email@email.com" />
 
-    <Button
-        android:id="@+id/current_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/profile_img"
-        android:layout_alignStart="@+id/profile_img"
-        android:layout_below="@+id/edit_profile"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorButtonBackground"
-        android:onClick="current_order_click"
-        android:text="Current Order"
-        android:textColor="@color/colorButtonText"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/name"
+                android:layout_below="@+id/name"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="778-123-1234" />
 
-    <TextView
-        android:id="@+id/phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/name"
-        android:layout_below="@+id/name"
-        android:layout_marginTop="5dp"
-        android:text="778-123-1234" />
+            <Button
+                android:id="@+id/current_order"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/profile_img"
+                android:layout_alignStart="@+id/profile_img"
+                android:layout_below="@+id/edit_profile"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorButtonBackground"
+                android:onClick="current_order_click"
+                android:text="Current Order"
+                android:textColor="@color/colorButtonText"
+                android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/edit_profile"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/current_order"
+                android:layout_alignStart="@+id/current_order"
+                android:layout_below="@+id/email"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorButtonBackground"
+                android:onClick="editProfile_click"
+                android:text="Edit Profile"
+                android:textColor="@color/colorButtonText"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/current_order"
+                android:layout_alignStart="@+id/current_order"
+                android:layout_below="@id/current_order"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorButtonBackground"
+                android:onClick="logout_click"
+                android:text="Logout"
+                android:textColor="@color/colorButtonText"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

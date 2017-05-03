@@ -22,7 +22,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/sfd_logo"
         android:id="@+id/logo"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/email" />

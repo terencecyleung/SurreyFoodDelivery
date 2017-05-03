@@ -41,7 +41,7 @@
                     android:adjustViewBounds="true"
                     android:gravity="start"
                     android:scaleType="fitStart"
-                    app:srcCompat="@drawable/logo" />
+                    app:srcCompat="@drawable/sfd_logo" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -93,8 +93,8 @@
                 android:layout_centerHorizontal="true"
                 android:text="Services"
                 android:textAlignment="textStart"
-                android:textSize="16dp"
                 android:textColor="@color/colorTitleText"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -108,10 +108,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorBodyText"
                 android:layout_margin="5dp"
                 android:text="@string/service_description"
-                android:textAlignment="textStart" />
+                android:textAlignment="textStart"
+                android:textColor="@color/colorBodyText" />
             <!--end services-->
 
             <!--delivery charges-->
@@ -136,10 +136,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorBodyText"
                 android:layout_margin="5dp"
                 android:text="@string/delivery_charge_description"
-                android:textAlignment="textStart" />
+                android:textAlignment="textStart"
+                android:textColor="@color/colorBodyText" />
             <!--end delivery charges-->
 
             <!--other delivery-->
@@ -164,10 +164,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorBodyText"
                 android:layout_margin="5dp"
                 android:text="@string/other_delivery_description"
-                android:textAlignment="textStart" />
+                android:textAlignment="textStart"
+                android:textColor="@color/colorBodyText" />
             <!--end other delivery-->
 
         </LinearLayout>
@@ -197,9 +197,10 @@
                 android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:background="@color/colorButtonBackground"
-                android:textColor="@color/colorButtonText"
                 android:onClick="customer_order_click"
-                android:text="Order Now&#10;(Customer)" />
+                android:text="Order Now&#10;(Customer)"
+                android:textColor="@color/colorButtonText"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button_restaurant_order"
@@ -208,9 +209,10 @@
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1"
                 android:background="@color/colorButtonBackground"
-                android:textColor="@color/colorButtonText"
                 android:onClick="restaurant_order_click"
-                android:text="Order Now&#10;(Restaurant)" />
+                android:text="Order Now&#10;(Restaurant)"
+                android:textColor="@color/colorButtonText"
+                android:textStyle="bold" />
         </LinearLayout>
         <!--end order button-->
 

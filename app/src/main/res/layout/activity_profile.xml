@@ -11,77 +11,76 @@
     tools:context="t27.surreyfooddeliveryapp.ProfileActivity">
 
     <ImageView
+        android:id="@+id/profile_img"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:src="@drawable/users"
-        android:id="@+id/profile_img"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/users" />
 
     <TextView
-        android:text="Homer Simpson"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
         android:layout_below="@id/profile_img"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:text="Homer Simpson" />
 
     <TextView
-        android:text="Address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:id="@+id/edit_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/phone"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Address" />
 
     <TextView
-        android:text="778-123-1234"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:id="@+id/phone"
-        android:layout_below="@+id/name"
-        android:layout_alignStart="@+id/logout" />
-
-    <TextView
-        android:text="email@email.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/edit_address"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="email@email.com" />
 
     <Button
-        android:text="Edit Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/edit_profile"
-        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/current_order"
+        android:layout_alignEnd="@+id/current_order"
         android:layout_alignStart="@+id/current_order"
-        android:layout_alignEnd="@+id/current_order" />
-
-    <Button
-        android:text="Logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/logout"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_alignStart="@+id/current_order"
-        android:layout_alignEnd="@+id/current_order" />
-
-    <Button
-        android:text="Current Order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:text="Edit Profile" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/current_order"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/current_order"
+        android:layout_marginBottom="30dp"
+        android:text="Logout" />
+
+    <Button
         android:id="@+id/current_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/logout"
+        android:layout_alignEnd="@+id/profile_img"
         android:layout_alignStart="@+id/profile_img"
-        android:layout_alignEnd="@+id/profile_img" />
+        android:layout_marginBottom="20dp"
+        android:text="Current Order" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/name"
+        android:layout_below="@+id/name"
+        android:text="778-123-1234" />
 
 </RelativeLayout>

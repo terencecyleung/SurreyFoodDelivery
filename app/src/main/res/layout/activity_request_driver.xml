@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,15 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="t27.surreyfooddeliveryapp.RequestDriverActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:orientation="vertical">
-
         <!--logo and title-->
         <LinearLayout
+            android:id="@+id/request_driver_header"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -58,8 +52,20 @@
         </LinearLayout>
         <!--end logo and title-->
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/request_driver_header"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp">
 
         <!--restaurant name-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -179,36 +185,99 @@
 
             <!--estimated pickup time-->
             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/restaurant_estimatedTime_start_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Ready in: "
+                        android:textSize="@dimen/register_font_size" />
+
+                    <EditText
+                        android:id="@+id/restaurant_estimatedTime_edittext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/editbox_background"
+                        android:gravity="start"
+                        android:inputType="number" />
+
+
+                    <TextView
+                        android:id="@+id/restaurant_estimatedTime_end_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="* minutes"
+                        android:textSize="@dimen/register_font_size" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--end estimated pickup time-->
+
+            <!--total amount-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/restaurant_totalAmount_start_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="left"
+                        android:text="Total amount: "
+                        android:textSize="@dimen/register_font_size" />
+
+                    <EditText
+                        android:id="@+id/restaurant_totalAmount_edittext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/editbox_background"
+                        android:gravity="start"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/restaurant_totalAmount_end_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="* dollars"
+                        android:textSize="@dimen/register_font_size" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--end total amount-->
+
+            <!--estimated pickup time-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/restaurant_estimatedTime_start_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:text="Ready in:"
-                    android:textSize="@dimen/register_font_size" />
 
-                <EditText
-                    android:id="@+id/restaurant_estimatedTime_edittext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="start"
-                    android:inputType="number" />
-
-
-                <TextView
-                    android:id="@+id/restaurant_estimatedTime_end_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:text="*minutes"
-                    android:textSize="@dimen/register_font_size" />
             </LinearLayout>
             <!--end estimated pickup time-->
 
@@ -343,7 +412,7 @@
                     android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
-                    android:text="Date and Time"
+                    android:text="Time"
                     android:textSize="@dimen/register_font_size" />
 
                 <EditText
@@ -353,7 +422,7 @@
                     android:background="@android:drawable/editbox_background"
                     android:gravity="start"
                     android:inputType="datetime"
-                    android:text="Right away" />
+                    android:text="Right Away" />
             </LinearLayout>
             <!--end date and time-->
 
@@ -386,5 +455,6 @@
         <!--end submit button-->
 
     </LinearLayout>
+            </ScrollView>
 
-</ScrollView>
+</RelativeLayout>

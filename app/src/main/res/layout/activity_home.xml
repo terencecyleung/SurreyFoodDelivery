@@ -191,6 +191,7 @@
                 android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:background="#ffffff"
+                android:onClick="customer_order_click"
                 android:text="Order Now&#10;(Customer)" />
 
             <Button
@@ -200,6 +201,7 @@
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1"
                 android:background="#ffffff"
+                android:onClick="restaurant_order_click"
                 android:text="Order Now&#10;(Restaurant)" />
         </LinearLayout>
         <!--end order button-->

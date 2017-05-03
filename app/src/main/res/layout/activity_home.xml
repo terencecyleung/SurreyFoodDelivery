@@ -243,7 +243,6 @@
             android:layout_height="32dp"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/loginButton"
-            android:layout_marginTop="5dp"
             app:srcCompat="@drawable/paymentoptions" />
 
         <!--end payment options-->

@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorAppBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -37,8 +36,8 @@
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="52dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:gravity="start"
                     android:scaleType="fitStart"
@@ -56,7 +55,6 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
-
 
         </LinearLayout>
         <!--end logo and title-->
@@ -299,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorButtonBackground"
                 android:onClick="register_submit"
-                android:text="Sign up"
+                android:text=" Sign up "
                 android:textColor="@color/colorButtonText"
                 android:textStyle="bold" />
 

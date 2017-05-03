@@ -32,7 +32,8 @@
         android:text="Surrey Food Delivery"
         android:textColor="#ffffff"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="casual" />
 
     <Button
         android:id="@+id/loginButton"

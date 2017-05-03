@@ -22,4 +22,11 @@ public class HomeActivity extends AppCompatActivity {
         Intent fromHomeToRequestDriver = new Intent(this, RequestDriverActivity.class);
         startActivity(fromHomeToRequestDriver);
     }
+
+    public void profile_click(View view) {
+        //TODO distiguish guest and customer and restaurant
+
+        Intent fromHomeToProfile = new Intent(this,ProfileActivity.class);
+        startActivity(fromHomeToProfile);
+    }
 }

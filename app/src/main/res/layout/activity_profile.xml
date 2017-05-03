@@ -53,6 +53,7 @@
         android:layout_alignEnd="@+id/current_order"
         android:layout_alignStart="@+id/current_order"
         android:layout_marginBottom="20dp"
+        android:onClick="editProfile_click"
         android:text="Edit Profile" />
 
     <Button
@@ -63,6 +64,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/current_order"
         android:layout_marginBottom="30dp"
+        android:onClick="logout_click"
         android:text="Logout" />
 
     <Button
@@ -73,6 +75,7 @@
         android:layout_alignEnd="@+id/profile_img"
         android:layout_alignStart="@+id/profile_img"
         android:layout_marginBottom="20dp"
+        android:onClick="current_order_click"
         android:text="Current Order" />
 
     <TextView

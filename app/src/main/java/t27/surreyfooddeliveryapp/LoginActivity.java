@@ -19,7 +19,9 @@ public class LoginActivity extends AppCompatActivity {
         if(true) {
             //passed validation
             Intent fromloginToHome = new Intent(this, HomeActivity.class);
+            fromloginToHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(fromloginToHome);
+
         }
 
         //fails to login in

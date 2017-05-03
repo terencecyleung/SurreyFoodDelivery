@@ -19,6 +19,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
         if(true) {
             //passed validation
             Intent from_cust_order_to_current_order = new Intent(this, CurrentOrderActivity.class);
+            from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
             startActivity(from_cust_order_to_current_order);
         }
 

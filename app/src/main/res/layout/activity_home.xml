@@ -53,14 +53,14 @@
         <!--profile icon-->
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:layout_alignParentTop="true"
             android:layout_weight="0.20"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_height="60dp"
                 android:adjustViewBounds="true"
                 android:onClick="profile_click"
                 app:srcCompat="@drawable/guesticon_allred" />

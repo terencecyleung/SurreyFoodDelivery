@@ -3,6 +3,7 @@ package t27.surreyfooddeliveryapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class CurrentOrderActivity extends AppCompatActivity {
     private Intent Intent_get_it;
@@ -27,8 +28,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
 
-
-
+    public void profile_click(View view) {
+        //TODO distiguish guest and customer and restaurant
+        Intent fromCurrentOrderToProfile = new Intent(this,ProfileActivity.class);
+        startActivity(fromCurrentOrderToProfile);
     }
 }

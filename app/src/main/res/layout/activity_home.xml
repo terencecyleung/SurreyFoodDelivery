@@ -63,7 +63,7 @@
                 android:layout_height="60dp"
                 android:adjustViewBounds="true"
                 android:onClick="profile_click"
-                app:srcCompat="@drawable/guesticon_white" />
+                app:srcCompat="@drawable/guest_icon" />
         </LinearLayout>
         <!--end profile icon-->
 

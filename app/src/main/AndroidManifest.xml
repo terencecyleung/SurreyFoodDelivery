@@ -8,22 +8,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".WelcomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".CustomerOrderActivity" />
-        <activity android:name=".RequestDriverActivity"></activity>
-        <activity android:name=".CurrentOrderActivity"></activity>
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".EditProfileActivity"></activity>
 
+        <activity android:name=".RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CustomerOrderActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RequestDriverActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CurrentOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".EditProfileActivity"
+            android:screenOrientation="portrait" />
     </application>
-
 </manifest>

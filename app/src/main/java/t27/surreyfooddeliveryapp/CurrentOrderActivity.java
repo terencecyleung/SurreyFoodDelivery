@@ -16,6 +16,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         Intent_get_it = getIntent();
     }
 
+    public void logo_click(View view) {
+        Intent newIntent = new Intent(this, HomeActivity.class);
+        startActivity(newIntent);
+    }
+
     @Override
     public void onBackPressed() {
 

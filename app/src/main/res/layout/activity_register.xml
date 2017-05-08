@@ -280,7 +280,6 @@
                 android:id="@+id/register_submit"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorButtonBackground"
                 android:onClick="register_submit"
                 android:text=" Sign up "
                 android:textColor="@color/colorButtonText"

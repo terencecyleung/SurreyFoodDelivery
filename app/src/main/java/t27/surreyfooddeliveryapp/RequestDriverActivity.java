@@ -13,9 +13,14 @@ public class RequestDriverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_request_driver);
     }
 
+    public void logo_click(View view) {
+        Intent newIntent = new Intent(this, HomeActivity.class);
+        startActivity(newIntent);
+    }
+
     public void restaurant_order_click(View view) {
         //TODO change true to validation function
-        if(true) {
+        if (true) {
             //passed validation
             Intent from_rest_order_to_current_order = new Intent(this, CurrentOrderActivity.class);
             from_rest_order_to_current_order.putExtra("caller_activity", "RequestDriverActivity");

@@ -14,13 +14,8 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void logo_click(View view) {
-        Intent newIntent = new Intent(this,HomeActivity.class);
+        Intent newIntent = new Intent(this, HomeActivity.class);
         startActivity(newIntent);
     }
 
-    public void profile_click(View view) {
-        //TODO distiguish guest and customer and restaurant
-        Intent newIntent = new Intent(this,ProfileActivity.class);
-        startActivity(newIntent);
-    }
 }

@@ -33,6 +33,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:gravity="start"
+                android:onClick="logo_click"
                 android:scaleType="fitStart"
                 app:srcCompat="@drawable/sfd_logo" />
 
@@ -43,7 +44,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
-                android:text="Surrey Food Delivery"
+                android:text="Request Driver"
                 android:textColor="@color/colorTitleText"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -85,8 +86,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Restaurant Name*"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Restaurant Name*" />
 
                     <EditText
                         android:id="@+id/restaurant_name_edittext"
@@ -111,8 +111,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Restaurant Phone*"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Restaurant Phone*" />
 
                     <EditText
                         android:id="@+id/restaurant_phone_edittext"
@@ -137,8 +136,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Restaurant Email"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Restaurant Email" />
 
                     <EditText
                         android:id="@+id/restaurant_email_edittext"
@@ -163,8 +161,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Restaurant Address*(pick-up)"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Restaurant Address*(pick-up)" />
 
                     <EditText
                         android:id="@+id/restaurant_address_edittext"
@@ -203,8 +200,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="Ready in: "
-                            android:textSize="@dimen/register_font_size" />
+                            android:text="Ready in: " />
 
                         <EditText
                             android:id="@+id/restaurant_estimatedTime_edittext"
@@ -220,8 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="* minutes"
-                            android:textSize="@dimen/register_font_size" />
+                            android:text="* minutes" />
                     </LinearLayout>
                 </LinearLayout>
                 <!--end estimated pickup time-->
@@ -244,10 +239,9 @@
                         <TextView
                             android:id="@+id/restaurant_totalAmount_start_textview"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:gravity="left"
-                            android:text="Total amount: "
-                            android:textSize="@dimen/register_font_size" />
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="Total amount: " />
 
                         <EditText
                             android:id="@+id/restaurant_totalAmount_edittext"
@@ -262,8 +256,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="* dollars"
-                            android:textSize="@dimen/register_font_size" />
+                            android:text="* dollars" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -303,8 +296,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Customer Name*"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Customer Name*" />
 
                     <EditText
                         android:id="@+id/restaurant_custname_edittext"
@@ -328,8 +320,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Customer Location*(drop-off)"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Customer Location*(drop-off)" />
 
                     <EditText
                         android:id="@+id/restaurant_custlocation_edittext"
@@ -353,8 +344,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Customer Phone*"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Customer Phone*" />
 
                     <EditText
                         android:id="@+id/restaurant_custphone_edittext"
@@ -379,8 +369,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Detail*"
-                        android:textSize="@dimen/register_font_size" />
+                        android:text="Detail*" />
 
                     <EditText
                         android:id="@+id/cust_order_detail_edittext"

@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:gravity="start"
+                android:hint="email"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
         <!--end email-->
@@ -164,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:gravity="start"
+                android:hint="name"
                 android:inputType="text" />
         </LinearLayout>
         <!--end password2-->
@@ -191,6 +193,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:gravity="start"
+                android:hint="phone number"
                 android:inputType="phone" />
         </LinearLayout>
         <!--end phone-->
@@ -218,6 +221,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:gravity="start"
+                android:hint="address"
                 android:inputType="textMultiLine|textPostalAddress" />
         </LinearLayout>
         <!--end Address-->
@@ -236,9 +240,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="Address detail"
-                android:textColor="@color/colorTitleText"
-                android:textSize="@dimen/register_font_size"
-                android:textStyle="bold" />
+                android:textColor="@color/colorTitleText" />
 
             <EditText
                 android:id="@+id/addressDetail_et"
@@ -246,6 +248,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:gravity="start"
+                android:hint="Apt, Suite, Buzz code, etc. (Optional)"
                 android:inputType="textMultiLine" />
         </LinearLayout>
         <!--end Address detail-->
@@ -259,10 +262,10 @@
             android:weightSum="1">
 
             <RadioGroup
+                android:id="@+id/types_radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/types_radioGroup">
+                android:orientation="horizontal">
 
                 <!--customer radio buttons-->
                 <RadioButton

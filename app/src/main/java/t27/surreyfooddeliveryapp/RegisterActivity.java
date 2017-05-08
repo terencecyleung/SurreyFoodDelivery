@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         name_EditText = (EditText) findViewById(R.id.name_et);
         phone_EditText = (EditText) findViewById(R.id.phone_et);
         address_EditText = (EditText) findViewById(R.id.address_et);
-        addressDetail_EditText = (EditText)findViewById(R.id.addressDetail_et);
+        addressDetail_EditText = (EditText) findViewById(R.id.addressDetail_et);
         type_RadioGroup = (RadioGroup) findViewById(R.id.types_radioGroup);
 
         //get fireBase db reference
@@ -78,13 +78,13 @@ public class RegisterActivity extends AppCompatActivity {
         email = email_EditText.getText().toString();
         password = password_EditText.getText().toString();
         password2 = password2_EditText.getText().toString();
-        name = name_EditText.getText().toString() ;
+        name = name_EditText.getText().toString();
         phone = phone_EditText.getText().toString();
         addressDetail = addressDetail_EditText.getText().toString();
         address = address_EditText.getText().toString();
 
         //TODO change true to add validation function
-        if(true) {
+        if (true) {
 
             //passed validation, so register the user
             register_account();
@@ -94,9 +94,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-
     //registration function to authentication and database
-    private void  register_account() {
+    private void register_account() {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -115,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
                             String accountUID = user.getUid();
                             Log.d(TAG, "onComplete: uid=" + accountUID);
 
-                            if(user != null) {
+                            if (user != null) {
                                 Customer newCustomer = new Customer(accountUID,
                                         accountType,
                                         email,
@@ -130,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(RegisterActivity.this, R.string.register_succeed,
                                         Toast.LENGTH_SHORT).show();
 
-                                Intent registerSucceed = new Intent(RegisterActivity.this,LoginActivity.class);
+                                Intent registerSucceed = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(registerSucceed);
                                 finish();
                             }

@@ -60,6 +60,7 @@
                     android:gravity="start"
                     android:orientation="vertical">
 
+                    <!--email-->
                     <TextView
                         android:id="@+id/email"
                         android:layout_width="220dp"
@@ -77,9 +78,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/email"
                         android:layout_below="@+id/email"
+                        android:hint="Email"
                         android:layout_gravity="center"
                         android:background="@android:drawable/editbox_background"
-                        android:ems="10"
                         android:inputType="textPersonName" />
                 </LinearLayout>
 
@@ -102,13 +103,12 @@
 
                     <EditText
                         android:id="@+id/password_input"
-                        android:layout_width="wrap_content"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/password"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:background="@android:drawable/editbox_background"
-                        android:ems="10"
                         android:inputType="textPassword" />
                 </LinearLayout>
 
@@ -133,6 +133,7 @@
                     android:layout_below="@id/login"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:text="Forgot Password" />
             </LinearLayout>
         </LinearLayout>

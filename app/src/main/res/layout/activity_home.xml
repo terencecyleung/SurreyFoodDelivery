@@ -179,8 +179,9 @@
         android:id="@+id/footerView"
         android:layout_width="match_parent"
         android:layout_height="138dp"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:layout_alignParentStart="true">
 
         <!--order button-->
         <!--to be replace with 1 button later-->
@@ -192,10 +193,10 @@
 
             <Button
                 android:id="@+id/button_customer_order"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
-                android:layout_weight="1"
+                android:layout_weight="0.4"
                 android:background="@color/colorButtonBackground"
                 android:onClick="customer_order_click"
                 android:text="Order Now&#10;(Customer)"
@@ -204,13 +205,13 @@
 
             <Button
                 android:id="@+id/button_restaurant_order"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:layout_weight="1"
+                android:layout_weight="0.4"
                 android:background="@color/colorButtonBackground"
                 android:onClick="restaurant_order_click"
-                android:text="Order Now&#10;(Restaurant)"
+                android:text="Request Driver&#10;(Restaurant)"
                 android:textColor="@color/colorButtonText"
                 android:textStyle="bold" />
         </LinearLayout>

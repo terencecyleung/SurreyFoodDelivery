@@ -43,6 +43,7 @@
                     android:adjustViewBounds="true"
                     android:gravity="start"
                     android:scaleType="fitStart"
+                    android:onClick="logo_click"
                     app:srcCompat="@drawable/sfd_logo" />
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="center"
-                    android:text="Surrey Food Delivery"
+                    android:text="New Order"
                     android:textColor="@color/colorTitleText"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -215,22 +216,16 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:weightSum="1">
-
             </LinearLayout>
             <!--end date and time-->
-
-            <!--space on bottom-->
-            <!--end   space on bottom-->
-
         </LinearLayout>
-
 
         <!--submit button-->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:weightSum="1">

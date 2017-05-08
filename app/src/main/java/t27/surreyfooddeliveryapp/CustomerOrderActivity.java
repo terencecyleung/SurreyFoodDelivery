@@ -13,6 +13,11 @@ public class CustomerOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customerorder);
     }
 
+    public void logo_click(View view) {
+        Intent newIntent = new Intent(this,HomeActivity.class);
+        startActivity(newIntent);
+    }
+
     public void cust_placeOrder_click(View view) {
 
         //TODO change true to validation function

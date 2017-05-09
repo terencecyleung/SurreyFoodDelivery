@@ -189,20 +189,20 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button_customer_order"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
-                android:layout_weight="0.4"
-                android:onClick="customer_order_click"
+                android:layout_gravity="center"
+                android:onClick="order_click"
                 android:text="Order Now&#10;(Customer)"
                 android:textColor="@color/colorButtonText"
                 android:textStyle="bold" />
 
-            <Button
+            <!--<Button
                 android:id="@+id/button_restaurant_order"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
                 android:onClick="restaurant_order_click"
                 android:text="Request Driver&#10;(Restaurant)"
                 android:textColor="@color/colorButtonText"
-                android:textStyle="bold" />
+                android:textStyle="bold" />-->
         </LinearLayout>
         <!--end order button-->
 

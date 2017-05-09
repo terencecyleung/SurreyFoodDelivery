@@ -7,4 +7,7 @@
     <string name="register_failed">Fail to sign up</string>
     <string name="register_succeed">Sign up successfully</string>
     <string name="User_infor">userInfo</string>
+
+    <string name="customer_order_btn_text">Order Now&#10;(Customer)</string>
+    <string name="resta_order_btn_text">Request Driver&#10;(Restaurant)</string>
 </resources>

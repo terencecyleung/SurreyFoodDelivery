@@ -354,7 +354,7 @@
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="Customer Location*" />
+                        android:text="Customer Address*" />
 
                     <EditText
                         android:id="@+id/restaurant_custlocation_edittext"

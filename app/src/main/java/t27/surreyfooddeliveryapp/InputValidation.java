@@ -45,14 +45,24 @@ public class InputValidation {
         return false;
     }
 
+    /**
+     *
+     * @param time
+     * @return true if time is between 0 - 60 minutes
+     */
     public static Boolean isValidReadyTime(String time) {
+        int minutes;
         try {
-            Integer.parseInt(time);
+            minutes = Integer.parseInt(time);
         } catch (Exception e) {
             return false;
         }
-        return true;
+
+        if (minutes >= 0 && minutes <= 60)
+            return true;
+
+        return false;
     }
 
-    
+
 }

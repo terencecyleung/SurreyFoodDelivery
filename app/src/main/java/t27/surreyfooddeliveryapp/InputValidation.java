@@ -1,5 +1,6 @@
 package t27.surreyfooddeliveryapp;
 
+import android.support.annotation.BoolRes;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
@@ -23,14 +24,10 @@ public class InputValidation {
     }
 
     public static Boolean isValidPhoneNumber(String number) {
-        boolean isValid = false;
-
-        if (!Pattern.matches("[a-zA-Z]+", number)) {
-            if (number.length() != 10)
-                return isValid;
-            isValid = true;
+        if (!TextUtils.isEmpty(number)) {
+            return android.util.Patterns.PHONE.matcher(number).matches();
         }
-        return isValid;
+        return false;
     }
 
     public static Boolean isValidName(String name) {
@@ -46,7 +43,6 @@ public class InputValidation {
     }
 
     /**
-     *
      * @param time
      * @return true if time is between 0 - 60 minutes
      */
@@ -64,5 +60,25 @@ public class InputValidation {
         return false;
     }
 
+    /**
+     * @param amount
+     * @return true if amount > 0 dollars
+     */
+    public static Boolean isValidAmount(String amount) {
+        double dblAmount;
+        try {
+            dblAmount = Double.parseDouble(amount);
+        } catch (Exception e) {
+            return false;
+        }
+        if (dblAmount > 0)
+            return true;
+        return false;
+    }
 
+    public static Boolean isValidOrderDetail(String detail) {
+        if (detail.length() > 0)
+            return true;
+        return false;
+    }
 }

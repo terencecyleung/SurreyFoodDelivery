@@ -308,9 +308,9 @@
                         android:id="@+id/restaurant_custname_edittext"
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
-                        android:hint="customer name"
                         android:background="@android:drawable/editbox_background"
                         android:gravity="start"
+                        android:hint="customer name"
                         android:inputType="text" />
                 </LinearLayout>
                 <!--end cust name-->
@@ -334,9 +334,9 @@
                         android:id="@+id/restaurant_custphone_edittext"
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
-                        android:hint="customer phone number"
                         android:background="@android:drawable/editbox_background"
                         android:gravity="start"
+                        android:hint="customer phone number"
                         android:inputType="phone" />
                 </LinearLayout>
                 <!--end cust phone-->
@@ -360,9 +360,9 @@
                         android:id="@+id/restaurant_custlocation_edittext"
                         android:layout_width="270dp"
                         android:layout_height="wrap_content"
-                        android:hint="drop off location"
                         android:background="@android:drawable/editbox_background"
                         android:gravity="start"
+                        android:hint="drop off location"
                         android:inputType="text" />
                 </LinearLayout>
                 <!--end cust location-->
@@ -415,18 +415,59 @@
                         android:layout_height="wrap_content"
                         android:background="@android:drawable/editbox_background"
                         android:gravity="top|left"
+                        android:hint="order detail"
                         android:inputType="textMultiLine"
-                        android:hint="order detail, preferred method of payment"
                         android:lines="5"
                         android:maxLines="10"
                         android:minHeight="100dp"
                         android:minLines="4"
-                        android:scrollbars="vertical"
-
-                        />
+                        android:scrollbars="vertical" />
                 </LinearLayout>
                 <!--end order detail-->
+            </LinearLayout>
 
+            <!--customer's payment method radio group-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/preferred_payment_textview"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Customer's method of payment:" />
+
+                <RadioGroup
+                    android:id="@+id/preferred_payment_radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical">
+
+                    <!--customer radio buttons-->
+                    <RadioButton
+                        android:id="@+id/cash_payment_radioButton"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Cash"
+                        android:textColor="@color/colorTitleText"
+                        android:textStyle="bold" />
+
+                    <!--restaurant radio buttons-->
+                    <RadioButton
+                        android:id="@+id/card_payment_radioButton"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:text="Debit/Visa"
+                        android:textColor="@color/colorTitleText"
+                        android:textStyle="bold" />
+                </RadioGroup>
             </LinearLayout>
 
 
@@ -435,7 +476,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:weightSum="1">

@@ -53,6 +53,11 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(from_profile_to_edit_pro);
     }
 
+    public void changePassword_click(View view) {
+        Intent from_profile_to_chagng_pass = new Intent(this,ChangePasswordActivity.class);
+        startActivity(from_profile_to_chagng_pass);
+    }
+
     public void logout_click(View view) {
 
         //login out function
@@ -79,4 +84,6 @@ public class ProfileActivity extends AppCompatActivity {
         prefsEditor.putString("userObject", null);
         prefsEditor.apply();
     }
+
+
 }

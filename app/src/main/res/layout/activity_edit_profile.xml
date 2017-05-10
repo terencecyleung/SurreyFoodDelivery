@@ -187,7 +187,7 @@
                 android:inputType="textEmailAddress"
                 android:text="some@email.com" />
 
-            <!-- Password -->
+<!--            &lt;!&ndash; Password &ndash;&gt;
             <TextView
                 android:id="@+id/password"
                 android:layout_width="wrap_content"
@@ -209,7 +209,7 @@
                 android:ems="10"
                 android:inputType="textPassword" />
 
-            <!--new password-->
+            &lt;!&ndash;new password&ndash;&gt;
             <TextView
                 android:id="@+id/new_pass"
                 android:layout_width="wrap_content"
@@ -232,7 +232,7 @@
                 android:inputType="textPassword" />
 
 
-            <!--confirm new password-->
+            &lt;!&ndash;confirm new password&ndash;&gt;
             <TextView
                 android:id="@+id/confirm_pass"
                 android:layout_width="wrap_content"
@@ -252,7 +252,7 @@
                 android:layout_below="@+id/confirm_pass"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword" />-->
 
         </RelativeLayout>
     </ScrollView>

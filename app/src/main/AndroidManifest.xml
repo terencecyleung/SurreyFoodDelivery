@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,22 +17,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".RegisterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CustomerOrderActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RequestDriverActivity"
+        <activity
+            android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".CurrentOrderActivity"
+        <activity
+            android:name=".LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".HomeActivity"
+        <activity
+            android:name=".CustomerOrderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ProfileActivity"
+        <activity
+            android:name=".RequestDriverActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".EditProfileActivity"
+        <activity
+            android:name=".CurrentOrderActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ChangePasswordActivity"></activity>
     </application>
+
 </manifest>

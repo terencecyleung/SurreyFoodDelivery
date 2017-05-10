@@ -3,7 +3,7 @@
     <string name="service_description">We Deliver fast food or pick up the food from the restaurant of you choice. Restaurants included are McDonalds, Wendys , Burgerking , Nandos and more. Delivery available based upon requested store hours.</string>
     <string name="delivery_charge_description">$12 minimum charge for one stop shop, $20 for two stop shops. \nTime - give us 40 minutes to deliver it to you.</string>
     <string name="other_delivery_description">Medication , smokes - Laundry Pickup and drop off, other small Item delivery and pick up.</string>
-
+    <string name="login_failed">Invalid email or password</string>
     <string name="register_failed">Fail to sign up</string>
     <string name="error_weak_password">Password is Weak</string>
     <string name="error_invalid_email">Invalid Email</string>

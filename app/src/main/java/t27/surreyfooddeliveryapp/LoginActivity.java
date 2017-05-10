@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         email = email_et.getText().toString();
         password = password_et.getText().toString();
 
+
         //TODO change true to validation function
         if(true) {
             //passed validation
@@ -71,6 +72,11 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         //fails to login in
+    }
+
+    public void errorMessage() {
+        Toast.makeText(LoginActivity.this, R.string.login_failed,
+                Toast.LENGTH_SHORT).show();
     }
 
     private void signIn() {

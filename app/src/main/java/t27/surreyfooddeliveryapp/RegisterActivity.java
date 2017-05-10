@@ -15,6 +15,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -106,8 +109,24 @@ public class RegisterActivity extends AppCompatActivity {
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, R.string.register_failed,
-                                    Toast.LENGTH_SHORT).show();
+                            if(!task.isSuccessful()) {
+                                try {
+                                    throw task.getException();
+                                } catch(FirebaseAuthWeakPasswordException e) {
+                                    Toast.makeText(RegisterActivity.this, getString(R.string.error_weak_password),
+                                            Toast.LENGTH_SHORT).show();
+                                } catch(FirebaseAuthInvalidCredentialsException e) {
+                                    Toast.makeText(RegisterActivity.this, getString(R.string.error_invalid_email),
+                                            Toast.LENGTH_SHORT).show();
+                                } catch(FirebaseAuthUserCollisionException e) {
+                                    Toast.makeText(RegisterActivity.this, getString(R.string.error_user_exists),
+                                            Toast.LENGTH_SHORT).show();
+                                } catch(Exception e) {
+                                    Toast.makeText(RegisterActivity.this, getString(R.string.register_failed),
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
                         } else {
                             //store to the database
                             FirebaseUser user = task.getResult().getUser();

@@ -5,6 +5,12 @@
     <string name="other_delivery_description">Medication , smokes - Laundry Pickup and drop off, other small Item delivery and pick up.</string>
 
     <string name="register_failed">Fail to sign up</string>
+    <string name="error_weak_password">Password is Weak</string>
+    <string name="error_invalid_email">Invalid Email</string>
+    <string name="error_user_exists">User already exists</string>
+
+
+
     <string name="register_succeed">Sign up successfully</string>
     <string name="User_infor">userInfo</string>
 

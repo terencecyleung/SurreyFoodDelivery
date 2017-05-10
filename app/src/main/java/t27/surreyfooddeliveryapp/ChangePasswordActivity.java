@@ -1,5 +1,7 @@
 package t27.surreyfooddeliveryapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
+
+import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
@@ -72,6 +77,27 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                 Log.d(TAG, "Password updated");
                                                 Toast.makeText(ChangePasswordActivity.this, "Password updated",
                                                         Toast.LENGTH_SHORT).show();
+
+                                                //----modify the object in sharedPreference
+                                                SharedPreferences shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
+                                                Gson gson = new Gson();
+                                                String json = shar_pre.getString("userObject", null);
+
+                                                //log in as customer or restaurant
+                                                //or logged in before
+                                                if (json != null) {
+                                                    Customer cur_customer = gson.fromJson(json, Customer.class);
+                                                    cur_customer.setPassword(newpass);
+
+                                                    //store back to sharedpre
+                                                    SharedPreferences.Editor prefsEditor = shar_pre.edit();
+                                                    gson = new Gson();
+                                                    json = gson.toJson(cur_customer);
+                                                    prefsEditor.putString("userObject", json);
+                                                    prefsEditor.apply();
+                                                    //end----store back
+                                                }
+                                                //end ------modify the object in sharedPreference
                                                 finish();
                                             } else {
                                                 try {

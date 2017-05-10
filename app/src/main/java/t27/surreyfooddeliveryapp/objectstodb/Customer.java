@@ -7,6 +7,23 @@ public class Customer {
     private String accountID;
     private String accountType;
     private String email;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     private String password;
     private String name;
     private String number;

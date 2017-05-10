@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //get back the customer object
-        shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
+        shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = shar_pre.getString("userObject", null);
 

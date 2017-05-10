@@ -3,6 +3,7 @@ package t27.surreyfooddeliveryapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,11 +28,11 @@ public class EditProfileActivity extends AppCompatActivity {
     String name;
     String phone;
     String address;
-    String email;
+    String address_detail;
     EditText name_et;
     EditText phone_et;
     EditText address_et;
-    EditText email_et;
+    EditText address_detail_et;
 
 
     @Override
@@ -45,31 +46,31 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onStart();
 
         //get back the customer object
-        shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
+        shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = shar_pre.getString("userObject", null);
 
         //log in as customer or restaurant
         //or logged in before
-        if (json != null) {
-            cur_customer = gson.fromJson(json, Customer.class);
-        }
+        if (json == null)
+            return;
+
+        cur_customer = gson.fromJson(json, Customer.class);
 
         name = cur_customer.getName();
         phone = cur_customer.getNumber();
         address = cur_customer.getAddress();
-        email = cur_customer.getEmail();
-
+        address_detail = cur_customer.getAddressDetail();
 
         name_et = (EditText) findViewById(R.id.edit_name);
         phone_et = (EditText) findViewById(R.id.edit_number);
         address_et = (EditText) findViewById(R.id.edit_address);
-        email_et = (EditText) findViewById(R.id.edit_email);
+        address_detail_et = (EditText) findViewById(R.id.edit_address_detail);
 
         name_et.setText(name);
         phone_et.setText(phone);
         address_et.setText(address);
-        email_et.setHint(email);
+        address_detail_et.setText(address_detail);
     }
 
     public void logo_click(View view) {
@@ -86,19 +87,29 @@ public class EditProfileActivity extends AppCompatActivity {
         final String name_updated = name_et.getText().toString();
         final String phone_updated = phone_et.getText().toString();
         final String address_updated = address_et.getText().toString();
+        final String address_detail_updated = address_detail_et.getText().toString();
 
-        //TODO validation
-        if (name_updated.isEmpty() || phone_updated.isEmpty() || address_updated.isEmpty()) {
-            Toast.makeText(EditProfileActivity.this, "Invalid empty field",
+
+        if (!InputValidation.isValidName(name_updated)) {
+            name_et.setError("Please enter a valid name");
+            Toast.makeText(EditProfileActivity.this, "Please enter a name",
                     Toast.LENGTH_SHORT).show();
             return;
         }
 
+        if (!InputValidation.isValidPhoneNumber(phone_updated)){
+            phone_et.setError("Please enter a valid phone number");
+            Toast.makeText(EditProfileActivity.this, "Please enter a valid phone number",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
         //-----update db
         Map<String, Object> userInfoUpdates = new HashMap<String, Object>();
         userInfoUpdates.put("name", name_updated);
         userInfoUpdates.put("number", phone_updated);
         userInfoUpdates.put("address", address_updated);
+        userInfoUpdates.put("addressDetail", address_detail_updated);
         currentUserRef.updateChildren(userInfoUpdates);
         //end-----update db
 
@@ -114,7 +125,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     System.out.println("Data saved successfully.");
 
                     //----modify the object in sharedPreference
-                    shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
+                    shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
                     Gson gson = new Gson();
                     String json = shar_pre.getString("userObject", null);
 
@@ -125,6 +136,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         cur_customer.setName(name_updated);
                         cur_customer.setNumber(phone_updated);
                         cur_customer.setAddress(address_updated);
+                        cur_customer.setAddressDetail(address_detail_updated);
 
                         //store back to sharedpre
                         SharedPreferences.Editor prefsEditor = shar_pre.edit();

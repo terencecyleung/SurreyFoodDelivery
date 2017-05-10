@@ -1,6 +1,7 @@
 package t27.surreyfooddeliveryapp.objectstodb;
 
 import java.util.HashMap;
+
 import com.google.firebase.database.ServerValue;
 
 public class Customer {
@@ -24,6 +25,10 @@ public class Customer {
         this.address = address;
     }
 
+    public void setAddressDetail(String addressDetail) {
+        this.addressDetail = addressDetail;
+    }
+
     private String password;
     private String name;
     private String number;
@@ -31,7 +36,7 @@ public class Customer {
     private String addressDetail;
     private HashMap<String, Object> timestampCreated;
 
-    public Customer(String accountID, String accountType, String email, String password, String name, String number, String address,String addressDetail) {
+    public Customer(String accountID, String accountType, String email, String password, String name, String number, String address, String addressDetail) {
         this.accountID = accountID;
         this.accountType = accountType;
         this.email = email;

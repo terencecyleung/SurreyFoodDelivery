@@ -87,15 +87,59 @@ public class RegisterActivity extends AppCompatActivity {
         address = address_EditText.getText().toString();
 
         //TODO change true to add validation function
-        if (true) {
 
-            //passed validation, so register the user
-            register_account();
-
-
+        /* email validation */
+        if (!InputValidation.isValidEmail(email)) {
+            email_EditText.setError("Invalid email address");
+            errorMessage();
+            return;
         }
+
+        /* password validation */
+        if (InputValidation.isWeakPassword(password)) {
+            password_EditText.setError("Password must contain at least 6 characters");
+            errorMessage();
+            return;
+        }
+
+        /* check whether two passowrds match */
+        if (!InputValidation.isSamePassword(password, password2)) {
+            password2_EditText.setError("Password does not match");
+            errorMessage();
+            return;
+        }
+
+        /* Name validation */
+        if (InputValidation.isValidName(name)) {
+            name_EditText.setError("Enter a name");
+            errorMessage();
+            return;
+        }
+
+        /* Phone number validation */
+        if (!InputValidation.isValidPhoneNumber(phone)) {
+            phone_EditText.setError("Invalid phone number");
+            errorMessage();
+            return;
+        }
+
+        /* address validation */
+        if(!InputValidation.isValidAddress(address)){
+            address = "";
+        }
+
+        /* address detail validation */
+        if(!InputValidation.isValidAddress(addressDetail)){
+            addressDetail = "";
+        }
+
+        register_account();
     }
 
+    public void errorMessage() {
+        Toast.makeText(RegisterActivity.this, R.string.register_failed,
+                Toast.LENGTH_SHORT).show();
+    }
 
     //registration function to authentication and database
     private void register_account() {

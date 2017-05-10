@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                 Customer loginUser = (Customer) dataSnapshot.getValue(Customer.class);
 
                 //store object to sharedPreference
-                userInfo_Prefs = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
+                userInfo_Prefs = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = userInfo_Prefs.edit();
                 Gson gson = new Gson();
                 String json = gson.toJson(loginUser);

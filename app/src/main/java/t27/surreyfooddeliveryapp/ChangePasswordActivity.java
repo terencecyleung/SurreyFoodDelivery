@@ -12,12 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 
@@ -79,7 +76,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                         Toast.LENGTH_SHORT).show();
 
                                                 //----modify the object in sharedPreference
-                                                SharedPreferences shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
+                                                SharedPreferences shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
                                                 Gson gson = new Gson();
                                                 String json = shar_pre.getString("userObject", null);
 

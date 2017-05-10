@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="order_click"
-                android:text="Order Now&#10;(Customer)"
+                android:text="Order Now"
                 android:textColor="@color/colorButtonText"
                 android:textStyle="bold" />
 

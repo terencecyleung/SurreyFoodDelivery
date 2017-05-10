@@ -53,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-        email_et = (EditText)findViewById(R.id.email_input);
-        password_et = (EditText)findViewById(R.id.password_input);
+        email_et = (EditText) findViewById(R.id.email_input);
+        password_et = (EditText) findViewById(R.id.password_input);
     }
 
     public void login_registered_click(View view) {
@@ -63,20 +63,17 @@ public class LoginActivity extends AppCompatActivity {
         password = password_et.getText().toString();
 
 
-        //TODO change true to validation function
-        if(true) {
-            //passed validation
-            signIn();
-
-
+        if (!InputValidation.isValidEmail(email)) {
+            Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        //fails to login in
-    }
+        if(InputValidation.isWeakPassword(password)){
+            Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-    public void errorMessage() {
-        Toast.makeText(LoginActivity.this, R.string.login_failed,
-                Toast.LENGTH_SHORT).show();
+        signIn();
     }
 
     private void signIn() {
@@ -93,11 +90,11 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 throw task.getException();
                             } catch (FirebaseAuthInvalidUserException e) {
-                                Log.d(TAG , "email :" + email);
+                                Log.d(TAG, "email :" + email);
                                 Toast.makeText(LoginActivity.this, "Invalid email",
                                         Toast.LENGTH_SHORT).show();
                             } catch (FirebaseAuthInvalidCredentialsException e) {
-                                Log.d(TAG , "email :" + email);
+                                Log.d(TAG, "email :" + email);
                                 Toast.makeText(LoginActivity.this, "Invalid password",
                                         Toast.LENGTH_SHORT).show();
                             } catch (FirebaseNetworkException e) {
@@ -135,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor prefsEditor = userInfo_Prefs.edit();
                 Gson gson = new Gson();
                 String json = gson.toJson(loginUser);
-                prefsEditor.putString("userUID",userUid);
+                prefsEditor.putString("userUID", userUid);
                 prefsEditor.putString("userObject", json);
                 prefsEditor.apply();
 
@@ -147,6 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "signInWithEmail:success");
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "onCancelled", databaseError.toException());

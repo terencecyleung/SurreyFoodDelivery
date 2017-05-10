@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 
@@ -15,37 +16,45 @@ import t27.surreyfooddeliveryapp.objectstodb.Customer;
 public class HomeActivity extends AppCompatActivity {
 
     SharedPreferences shar_pre;
-    String account_type;
+    ImageView icon_profile;
+    Button order_btn;
+    String account_type = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button order_btn = (Button) findViewById(R.id.button_customer_order);
+        order_btn = (Button) findViewById(R.id.button_customer_order);
+        icon_profile = (ImageView) findViewById(R.id.profile_icon);
+
 
         //get back the customer object
         shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_infor), Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = shar_pre.getString("userObject", null);
-        Customer cur_customer = gson.fromJson(json, Customer.class);
 
-        //get type
-        account_type = cur_customer.getAccountType();
-
-        if(account_type.equals("Customer")) {
-            order_btn.setText(getString(R.string.customer_order_btn_text));
-        } else if(account_type.equals("Restaurant")) {
-            order_btn.setText(getString(R.string.resta_order_btn_text));
+        //log in as customer or restaurant
+        //or logged in before
+        if(json!=null) {
+            Customer cur_customer = gson.fromJson(json, Customer.class);
+            //get type
+            account_type = cur_customer.getAccountType();
+            //set button order text based on type(restaurant or customer)
+            if(account_type.equals("Customer")) {
+                order_btn.setText(getString(R.string.customer_order_btn_text));
+                icon_profile.setImageResource(R.drawable.customericon);
+            } else if(account_type.equals("Restaurant")) {
+                order_btn.setText(getString(R.string.resta_order_btn_text));
+                icon_profile.setImageResource(R.drawable.restauranticon);
+            }
         }
 
-
-
-
+        //otherwise login as a guest
     }
 
     public void order_click(View view) {
-        if(account_type.equals("Customer")) {
+        if(account_type==null||account_type.equals("Customer")) {
             Intent fromHomeToCustomerOrder = new Intent(this, CustomerOrderActivity.class);
             startActivity(fromHomeToCustomerOrder);
         } else if(account_type.equals("Restaurant")) {
@@ -53,11 +62,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(fromHomeToRequestDriver);
         }
 
-    }
-
-    public void restaurant_order_click(View view) {
-        Intent fromHomeToRequestDriver = new Intent(this, RequestDriverActivity.class);
-        startActivity(fromHomeToRequestDriver);
     }
 
     public void profile_click(View view) {

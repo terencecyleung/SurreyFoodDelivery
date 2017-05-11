@@ -5,17 +5,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
+import t27.surreyfooddeliveryapp.objectstodb.Order;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class CustomerOrderActivity extends AppCompatActivity {
+    private DatabaseReference mDatabaseRef;
     SharedPreferences shared_preference;
     //input fields
     private String name;
@@ -40,6 +48,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_order);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
         //get EditTexts from xml
         name_et = (EditText)findViewById(R.id.cust_order_name_edittext);
@@ -125,8 +134,19 @@ public class CustomerOrderActivity extends AppCompatActivity {
         Toast.makeText(CustomerOrderActivity.this, "Order successfully placed.",
                 Toast.LENGTH_SHORT).show();
 
+        //get the token for notification to store in the order in db
+        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
+        String token= tokenPre.getString("token",null);
+        //Log.d("tokenM",token);
         //place order
-        placeOrder();
+        placeOrder(token,
+                name,
+                phone,
+                email,
+                address,
+                address_detail,
+                order_detail,
+                preferred_payment_method);
 
         //go to currentOrders activity
         Intent from_cust_order_to_current_order = new Intent(this, CurrentOrderActivity.class);
@@ -137,7 +157,45 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
 
     //TODO send order info to dispatcher/db
-    private void placeOrder(){
+    private void placeOrder(String token,
+            String name,
+            String phone,
+            String email,
+            String address,
+            String address_detail,
+            String order_detail,
+            String preferred_payment_method){
+
+        Order newOrder = new Order(token,
+                                    "customer",
+                                    name,
+                                    phone,
+                                    address,
+                                    order_detail,
+                                    preferred_payment_method,
+                                    "pending");
+
+        mDatabaseRef.child("order").push().setValue(newOrder, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    System.out.println("Order could not be saved " + databaseError.getMessage());
+                } else {
+                    System.out.println("Order successfully.");
+                }
+            }
+        });
+
+        /*String notification_token,
+        String orderType,
+        String drop_cust_name,
+        String drop_phone,
+        String drop_address,
+        String order_detail,
+        String payment_method,
+        String state*/
+
+
 
     }
 }

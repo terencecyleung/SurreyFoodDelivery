@@ -43,6 +43,15 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".ForgotPasswordActivity" />
+
+        <!-- [START firebase_iid_service] -->
+        <service
+            android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <!-- [END firebase_iid_service] -->
     </application>
 
 </manifest>

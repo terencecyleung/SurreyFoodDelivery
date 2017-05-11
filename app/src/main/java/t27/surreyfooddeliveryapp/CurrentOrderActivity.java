@@ -13,16 +13,21 @@ import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class CurrentOrderActivity extends AppCompatActivity {
     private Intent Intent_get_it;
     SharedPreferences shar_pre;
     ImageView icon_profile;
     String account_type = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order);
+
         Intent_get_it = getIntent();
 
         icon_profile = (ImageView) findViewById(R.id.profile_icon);
@@ -44,6 +49,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 icon_profile.setImageResource(R.drawable.restauranticon);
             }
         }
+
     }
 
     public void logo_click(View view) {

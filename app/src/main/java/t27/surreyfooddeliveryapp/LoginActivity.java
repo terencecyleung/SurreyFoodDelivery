@@ -3,9 +3,9 @@ package t27.surreyfooddeliveryapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -156,5 +156,10 @@ public class LoginActivity extends AppCompatActivity {
                 // [END_EXCLUDE]
             }
         });
+    }
+
+    public void forgotPassword(View view) {
+        Intent intent = new Intent(this, ForgotPasswordActivity.class);
+        startActivity(intent);
     }
 }

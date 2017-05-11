@@ -103,7 +103,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        
+
         //-----update db
         Map<String, Object> userInfoUpdates = new HashMap<String, Object>();
         userInfoUpdates.put("name", name_updated);

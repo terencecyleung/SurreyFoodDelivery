@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/editbox_background"
                     android:gravity="start"
-                    android:hint="phone (xxx-xxx-xxxx)"
+                    android:hint="###-###-####-EXT"
                     android:inputType="phone" />
             </LinearLayout>
             <!--end phone #-->

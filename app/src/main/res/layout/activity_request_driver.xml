@@ -120,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:drawable/editbox_background"
                         android:gravity="start"
-                        android:hint="restaurant phone number"
+                        android:hint="###-###-####-EXT"
                         android:inputType="phone" />
                 </LinearLayout>
                 <!--end resta phone #-->
@@ -336,7 +336,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:drawable/editbox_background"
                         android:gravity="start"
-                        android:hint="customer phone number"
+                        android:hint="###-###-####-EXT"
                         android:inputType="phone" />
                 </LinearLayout>
                 <!--end cust phone-->

@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
@@ -116,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
         final String userUid = user.getUid();
+
 
         //get user information from db and store to sharedPreference
         Query userInfo_query = mDatabaseRef.child("users").child(userUid);

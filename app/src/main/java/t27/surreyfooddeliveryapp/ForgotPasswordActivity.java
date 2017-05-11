@@ -86,7 +86,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ForgotPasswordActivity.this, "Error reading email, please try again",
+                Toast.makeText(ForgotPasswordActivity.this, databaseError.getMessage(),
                         Toast.LENGTH_SHORT).show();
             }
         });

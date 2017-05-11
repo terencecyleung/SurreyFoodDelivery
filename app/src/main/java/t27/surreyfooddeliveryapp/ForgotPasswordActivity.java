@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,8 +49,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             queryAccount(userQuery, emailAddress);
                             //text.setError("Dispatcher or Admin email only");
                         } else {
-                            Toast.makeText(ForgotPasswordActivity.this, "Invalid email",
-                                    Toast.LENGTH_SHORT).show();
+
+                            /*Toast.makeText(ForgotPasswordActivity.this, "Invalid email",
+                                    Toast.LENGTH_SHORT).show();*/
+                            try {
+                                throw task.getException();
+                            } catch (Exception e) {
+                                Toast.makeText(ForgotPasswordActivity.this, e.getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });

@@ -110,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         /* Name validation */
-        if (InputValidation.isValidName(name)) {
+        if (!InputValidation.isValidName(name)) {
             name_EditText.setError("Enter a name");
             errorMessage();
             return;

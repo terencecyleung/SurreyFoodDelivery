@@ -255,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:background="@android:drawable/editbox_background"
                             android:gravity="start"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
 
                         <TextView
                             android:id="@+id/restaurant_totalAmount_end_textview"

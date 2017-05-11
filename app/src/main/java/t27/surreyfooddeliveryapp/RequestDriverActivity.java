@@ -66,7 +66,7 @@ public class RequestDriverActivity extends AppCompatActivity {
         ready_time_et = (EditText) findViewById(R.id.restaurant_estimatedTime_edittext);
         total_amount_et = (EditText) findViewById(R.id.restaurant_totalAmount_edittext);
         customer_name_et = (EditText) findViewById(R.id.restaurant_custname_edittext);
-        customer_phone_et = (EditText) findViewById(R.id.restaurant_custlocation_edittext);
+        customer_phone_et = (EditText) findViewById(R.id.restaurant_custphone_edittext);
         customer_address_et = (EditText) findViewById(R.id.restaurant_custlocation_edittext);
         customer_address_detail_et = (EditText) findViewById(R.id.restaurant_custlocation_detail_edittext);
         order_detail_et = (EditText) findViewById(R.id.cust_order_detail_edittext);

@@ -73,13 +73,13 @@ public class ProfileActivity extends AppCompatActivity {
             email_tv.setText(cur_email);
             phone_tv.setText(cur_phone);
         } else {
-            logout_btn.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+            //logout_btn.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
             editProfile_btn.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
             changePass_btn.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 
             editProfile_btn.setTextColor(Color.GRAY);
             changePass_btn.setTextColor(Color.GRAY);
-            logout_btn.setTextColor(Color.GRAY);
+            //logout_btn.setTextColor(Color.GRAY);
 
             editProfile_btn.setEnabled(false);
             changePass_btn.setEnabled(false);

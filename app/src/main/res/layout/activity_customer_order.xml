@@ -50,7 +50,25 @@
                 android:textColor="@color/colorTitleText"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:gravity="end"
+                android:onClick="logo_click"
+                android:scaleType="fitStart" />
+
         </LinearLayout>
+        <!--profile icon-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_weight="0.20"-->
+        <!--android:orientation="horizontal">-->
+        <!--</LinearLayout>-->
+        <!--end profile icon-->
     </LinearLayout>
     <!--end logo and title-->
 

@@ -1,6 +1,8 @@
 package t27.surreyfooddeliveryapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +11,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class CustomerOrderActivity extends AppCompatActivity {
+import com.google.gson.Gson;
 
+import t27.surreyfooddeliveryapp.objectstodb.Customer;
+
+public class CustomerOrderActivity extends AppCompatActivity {
+    SharedPreferences shared_preference;
     //input fields
     private String name;
     private String phone;
@@ -43,6 +49,30 @@ public class CustomerOrderActivity extends AppCompatActivity {
         address_detail_et = (EditText)findViewById(R.id.cust_order_address_detail_edittext);
         order_detail_et = (EditText)findViewById(R.id.cust_order_detail_edittext);
         preferred_payment_method_RadioGroup = (RadioGroup) findViewById(R.id.preferred_payment_radioGroup);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //get back the customer object
+        shared_preference = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = shared_preference.getString("userObject", null);
+        if (json != null) {
+            Customer cur_customer = gson.fromJson(json, Customer.class);
+            String cur_name = cur_customer.getName();
+            String cur_address = cur_customer.getAddress();
+            String cur_address_detail = cur_customer.getAddressDetail();
+            String cur_email = cur_customer.getEmail();
+            String cur_phone = cur_customer.getNumber();
+
+            name_et.setText(cur_name);
+            phone_et.setText(cur_phone);
+            email_et.setText(cur_email);
+            address_et.setText(cur_address);
+            address_detail_et.setText(cur_address_detail);
+        }
     }
 
     public void logo_click(View view) {

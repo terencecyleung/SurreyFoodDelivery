@@ -35,9 +35,14 @@ public class CustomerOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_order);
 
-        //get input fields in xml
+        //get EditTexts from xml
         name_et = (EditText)findViewById(R.id.cust_order_name_edittext);
         phone_et = (EditText)findViewById(R.id.cust_order_phone_edittext);
+        email_et = (EditText)findViewById(R.id.cust_order_email_edittext);
+        address_et = (EditText)findViewById(R.id.cust_order_address_edittext);
+        address_detail_et = (EditText)findViewById(R.id.cust_order_address_detail_edittext);
+        order_detail_et = (EditText)findViewById(R.id.cust_order_detail_edittext);
+        preferred_payment_method_RadioGroup = (RadioGroup) findViewById(R.id.preferred_payment_radioGroup);
     }
 
     public void logo_click(View view) {
@@ -46,14 +51,45 @@ public class CustomerOrderActivity extends AppCompatActivity {
     }
 
     public void cust_placeOrder_click(View view) {
+        //get input strings from EditTexts
+        name = name_et.getText().toString();
+        phone = phone_et.getText().toString();
+        email = email_et.getText().toString();
+        address = address_et.getText().toString();
+        address_detail = address_detail_et.getText().toString();
+        order_detail = order_detail_et.getText().toString();
+        preferred_payment_method_RadioButton = (RadioButton) findViewById(preferred_payment_method_RadioGroup.getCheckedRadioButtonId());
+        preferred_payment_method = preferred_payment_method_RadioButton.getText().toString();
 
-        //TODO change true to validation function
 
-        if(true) {
-
-
+        //input validations
+        if (!InputValidation.isValidName(name)) {
+            name_et.setError("invalid name");
+            Toast.makeText(CustomerOrderActivity.this, "Please enter a valid name",
+                    Toast.LENGTH_SHORT).show();
+            return;
         }
 
+        if(!InputValidation.isValidPhoneNumber(phone)){
+            phone_et.setError("invalid phone number");
+            Toast.makeText(CustomerOrderActivity.this, "Please enter a valid phone number",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!InputValidation.isValidAddress(address)){
+            address_et.setError("invalid address");
+            Toast.makeText(CustomerOrderActivity.this, "Please enter a valid address",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!InputValidation.isValidOrderDetail(order_detail)){
+            order_detail_et.setError("invalid order detail");
+            Toast.makeText(CustomerOrderActivity.this, "Please enter order details",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         //if validations passed, display a success toast
         Toast.makeText(CustomerOrderActivity.this, "Order successfully placed.",
@@ -70,7 +106,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
     }
 
 
-    //TODO send order detail to db
+    //TODO send order info to dispatcher/db
     private void placeOrder(){
 
     }

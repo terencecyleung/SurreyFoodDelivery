@@ -85,6 +85,14 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             readAndSignIn_Customer_Once();
+
+                            //-------update token--------------
+                            SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
+                            SharedPreferences.Editor prefsEditor = tokenPre.edit();
+                            prefsEditor.putString("token", FirebaseInstanceId.getInstance().getToken());
+                            prefsEditor.apply();
+
+                            //---------------------
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

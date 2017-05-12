@@ -29,7 +29,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.v(TAG, "Message data payload: " + remoteMessage.getData());
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
             mBuilder.setSmallIcon(R.mipmap.ic_launcher);
-            mBuilder.setContentTitle("From"+payload.get("ema"));
+            mBuilder.setContentTitle("From: "+payload.get("ema"));
             mBuilder.setContentText(payload.get("order_detail") + "\n" + payload.get("notification_user_token"));
 
             Intent resultIntent = new Intent(this, CurrentOrderActivity.class);

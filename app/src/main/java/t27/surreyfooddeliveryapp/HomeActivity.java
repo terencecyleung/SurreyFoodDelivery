@@ -41,10 +41,10 @@ public class HomeActivity extends AppCompatActivity {
             //get type
             account_type = cur_customer.getAccountType();
             //set button order text based on type(restaurant or customer)
-            if(account_type.equals("customer")) {
+            if(account_type.equals("customer")||account_type.equals("Customer")) {
                 order_btn.setText(getString(R.string.customer_order_btn_text));
                 icon_profile.setImageResource(R.drawable.customericon);
-            } else if(account_type.equals("restaurant")) {
+            } else if(account_type.equals("restaurant")||account_type.equals("Restaurant")) {
                 order_btn.setText(getString(R.string.resta_order_btn_text));
                 icon_profile.setImageResource(R.drawable.restauranticon);
             }
@@ -54,10 +54,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void order_click(View view) {
-        if(account_type==null||account_type.equals("customer")) {
+        if(account_type==null||account_type.equals("customer")||account_type.equals("Customer")) {
             Intent fromHomeToCustomerOrder = new Intent(this, CustomerOrderActivity.class);
             startActivity(fromHomeToCustomerOrder);
-        } else if(account_type.equals("restaurant")) {
+        } else if(account_type.equals("restaurant")||account_type.equals("Restaurant")) {
             Intent fromHomeToRequestDriver = new Intent(this, RequestDriverActivity.class);
             startActivity(fromHomeToRequestDriver);
         }

@@ -14,7 +14,10 @@ package t27.surreyfooddeliveryapp.objectstodb;
 *
 * */
 public class Order {
+
+
     //necessary
+    private String orderUid;
     private String notification_user_token;
     private String orderType;
     private String drop_cust_name;
@@ -39,7 +42,8 @@ public class Order {
 
     public Order(){}
 
-    public Order(    String notification_user_token,
+    public Order(    String orderUid,
+                     String notification_user_token,
                      String orderType,
                      String drop_cust_name,
                      String drop_phone,
@@ -55,6 +59,10 @@ public class Order {
         this.order_detail = order_detail;
         this.payment_method = payment_method;
         this.state = state;
+    }
+
+    public String getOrderUid() {
+        return orderUid;
     }
 
     public String getNotification_user_token() {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
@@ -19,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CurrentOrderActivity extends AppCompatActivity {
     private Intent Intent_get_it;
     SharedPreferences shar_pre;
-    ImageView icon_profile;
+    //ImageView icon_profile;
     String account_type = null;
 
 
@@ -30,7 +31,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         Intent_get_it = getIntent();
 
-        icon_profile = (ImageView) findViewById(R.id.profile_icon);
+        //icon_profile = (ImageView) findViewById(R.id.profile_icon);
         //get back the customer object
         shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -43,11 +44,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
             //get type
             account_type = cur_customer.getAccountType();
             //set button order text based on type(restaurant or customer)
-            if (account_type.equals("customer")) {
+/*            if (account_type.equals("customer")) {
                 icon_profile.setImageResource(R.drawable.customericon);
             } else if (account_type.equals("restaurant")) {
                 icon_profile.setImageResource(R.drawable.restauranticon);
-            }
+            }*/
         }
 
     }

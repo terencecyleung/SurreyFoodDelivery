@@ -12,19 +12,25 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 import t27.surreyfooddeliveryapp.objectstodb.Order;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class CustomerOrderActivity extends AppCompatActivity {
+    private String TAG = "CustomerOrderActivity";
     private DatabaseReference mDatabaseRef;
-    SharedPreferences shared_preference;
+    private SharedPreferences shared_preference;
     //input fields
     private String name;
     private String phone;
@@ -43,6 +49,8 @@ public class CustomerOrderActivity extends AppCompatActivity {
     private EditText order_detail_et;
     private RadioGroup preferred_payment_method_RadioGroup;
     private RadioButton preferred_payment_method_RadioButton;
+
+    private String cur_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +81,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
             String cur_name = cur_customer.getName();
             String cur_address = cur_customer.getAddress();
             String cur_address_detail = cur_customer.getAddressDetail();
-            String cur_email = cur_customer.getEmail();
+            cur_email = cur_customer.getEmail();
             String cur_phone = cur_customer.getNumber();
 
             name_et.setText(cur_name);
@@ -166,7 +174,12 @@ public class CustomerOrderActivity extends AppCompatActivity {
             String order_detail,
             String preferred_payment_method){
 
-        Order newOrder = new Order(token,
+
+
+        DatabaseReference orderRef = mDatabaseRef.child("order").push();
+        String orderUid = orderRef.getKey();
+        Order newOrder = new Order( orderUid,
+                                    token,
                                     "customer",
                                     name,
                                     phone,
@@ -174,13 +187,29 @@ public class CustomerOrderActivity extends AppCompatActivity {
                                     order_detail,
                                     preferred_payment_method,
                                     "pending");
+        newOrder.setDropoff_email(email);
+        newOrder.setDropoff_address_detail(address_detail);
+        final Order newOrderSaved = newOrder;
 
-        mDatabaseRef.child("order").push().setValue(newOrder, new DatabaseReference.CompletionListener() {
+        orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
+
+            String loginEmail;
+
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
                     System.out.println("Order could not be saved " + databaseError.getMessage());
                 } else {
+                    if(cur_email == null) {
+                        cur_email = "guest";
+                    }
+
+
+                    CachedOrderPrefrence.saveOrderToAppByEmail(getApplicationContext(),
+                                                                cur_email,
+                                                                newOrderSaved);
+                    Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
+                                                                                        cur_email));
                     System.out.println("Order successfully.");
                 }
             }

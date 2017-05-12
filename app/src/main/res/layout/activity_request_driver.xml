@@ -27,15 +27,15 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:gravity="start"
-                android:onClick="logo_click"
-                android:scaleType="fitStart"
-                app:srcCompat="@drawable/sfd_logo" />
+            <!--<ImageView-->
+                <!--android:id="@+id/logo"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:gravity="start"-->
+                <!--android:onClick="logo_click"-->
+                <!--android:scaleType="fitStart"-->
+                <!--app:srcCompat="@drawable/sfd_logo" />-->
 
             <TextView
                 android:id="@+id/editText2"
@@ -46,16 +46,8 @@
                 android:gravity="center"
                 android:text="Request Driver"
                 android:textColor="@color/colorTitleText"
-                android:textSize="20dp"
+                android:textSize="@dimen/header_font_size"
                 android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:gravity="end"
-                android:onClick="logo_click"
-                android:scaleType="fitStart" />
         </LinearLayout>
 
     </LinearLayout>

@@ -44,7 +44,7 @@
                     android:gravity="center"
                     android:text="Register"
                     android:textColor="@color/colorTitleText"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/header_font_size"
                     android:textStyle="bold" />
             </LinearLayout>
 

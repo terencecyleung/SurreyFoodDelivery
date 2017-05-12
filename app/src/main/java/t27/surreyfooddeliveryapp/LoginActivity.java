@@ -65,12 +65,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (!InputValidation.isValidEmail(email)) {
-            Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+            ((EditText) findViewById(R.id.email_input)).setError("incorrect email");
+            Toast.makeText(LoginActivity.this, "Incorrect email", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(InputValidation.isWeakPassword(password)){
-            Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+            ((EditText) findViewById(R.id.password_input)).setError("incorrect password");
+            Toast.makeText(LoginActivity.this, "Incorrect password", Toast.LENGTH_SHORT).show();
             return;
         }
 

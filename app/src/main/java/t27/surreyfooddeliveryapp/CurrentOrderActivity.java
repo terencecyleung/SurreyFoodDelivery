@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,6 +99,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
         cur_email = (cur_email==null)?"guest":cur_email;
         orders = getOrderByEmail(getApplicationContext(),cur_email);
 
+        Collections.reverse(orders);
+
         ordersAdapter =
                 new OrderAdapter(this,orders);
         //Log.d("numorder", "onStart: " + orders.size());
@@ -122,6 +125,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
         super.onStop();
         for (Map.Entry<DatabaseReference, ValueEventListener> entry : mapOfRefToOrderListener.entrySet())
         {
+            //detach listener
             entry.getKey().removeEventListener(entry.getValue());
         }
     }
@@ -188,11 +192,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
     public class OrderChangeListener implements ValueEventListener {
 
         Order oneorder;
-        Order oldone;
 
         public OrderChangeListener(Order order) {
             this.oneorder = order;
-            oldone = order;
         }
 
             @Override
@@ -201,9 +203,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
                         oneorder.setState(orderState);
                 if(orderState == null) {
                     oneorder.setState("finished");
-                    CachedOrderPrefrence.updateOrderByEmail(getApplicationContext(),cur_email,oldone,oneorder);
                 }
                 //real time change to ui
+                CachedOrderPrefrence.updateOrderByEmail(getApplicationContext(),cur_email,oneorder);
                 ordersAdapter.notifyDataSetChanged();
 
             }

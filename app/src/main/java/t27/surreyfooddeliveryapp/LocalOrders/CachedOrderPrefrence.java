@@ -2,6 +2,7 @@ package t27.surreyfooddeliveryapp.LocalOrders;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -58,7 +59,7 @@ public class CachedOrderPrefrence {
         prefsEditor.apply();
     }
 
-    public static boolean updateOrderByEmail(Context ApplicationContext,String email, Order oldone,Order newone) {
+    public static boolean updateOrderByEmail(Context ApplicationContext,String email,Order newone) {
         ArrayList<Order> orders_al;
 
         SharedPreferences sp = getLocalRecordPreByEmail(ApplicationContext, email);
@@ -66,15 +67,25 @@ public class CachedOrderPrefrence {
         Gson gson = new Gson();
 
         //nothing in the email
-        if (orders_js == null) {
-            return false;
-        } else {
+        if (orders_js != null) {
             //try to update
             orders_al = gson.fromJson(orders_js, new TypeToken<ArrayList<Order>>() {
             }.getType());
-        }
+            Log.d("upd", "updateOrderByEmail: hello" + newone.toString());
+            if(orders_al.contains(newone)) {
+                Collections.replaceAll(orders_al, newone, newone);
+                SharedPreferences.Editor prefsEditor = sp.edit();
+                String newjson = gson.toJson(orders_al);
+                prefsEditor.putString("orders", newjson);
+                prefsEditor.apply();
+                Log.d("upd", "updateOrderByEmail: world" +newjson);
+                return true;
 
-        return orders_al.contains(oldone) && Collections.replaceAll(orders_al, oldone, newone);
+            }
+        }
+        return false;
+
+
 
     }
 

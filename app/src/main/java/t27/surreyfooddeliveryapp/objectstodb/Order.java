@@ -42,6 +42,16 @@ public class Order {
 
     public Order(){}
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Order) {
+            Order one = (Order)(obj);
+            return this.orderUid.equals(one.orderUid);
+        }
+        return false;
+
+    }
+
     public Order(    String orderUid,
                      String notification_user_token,
                      String orderType,
@@ -61,6 +71,7 @@ public class Order {
         this.payment_method = payment_method;
         this.state = state;
     }
+
 
     public String getOrderUid() {
         return orderUid;
@@ -195,14 +206,26 @@ public class Order {
     }
 
 
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderUid='" + orderUid + '\'' +
+                ", notification_user_token='" + notification_user_token + '\'' +
+                ", orderType='" + orderType + '\'' +
+                ", drop_cust_name='" + drop_cust_name + '\'' +
+                ", drop_phone='" + drop_phone + '\'' +
+                ", drop_address='" + drop_address + '\'' +
+                ", order_detail='" + order_detail + '\'' +
+                ", payment_method='" + payment_method + '\'' +
+                ", state='" + state + '\'' +
+                ", dropoff_address_detail='" + dropoff_address_detail + '\'' +
+                ", dropoff_email='" + dropoff_email + '\'' +
+                ", cust_total='" + cust_total + '\'' +
+                ", rest_name='" + rest_name + '\'' +
+                ", rest_phone='" + rest_phone + '\'' +
+                ", rest_email='" + rest_email + '\'' +
+                ", rest_address='" + rest_address + '\'' +
+                ", rest_ready_min='" + rest_ready_min + '\'' +
+                '}';
+    }
 }

@@ -138,10 +138,6 @@ public class CustomerOrderActivity extends AppCompatActivity {
             return;
         }
 
-        //if validations passed, display a success toast
-        Toast.makeText(CustomerOrderActivity.this, "Order successfully placed.",
-                Toast.LENGTH_SHORT).show();
-
         //get the token for notification to store in the order in db
         SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
         String token= tokenPre.getString("token",null);
@@ -156,10 +152,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
                 order_detail,
                 preferred_payment_method);
 
-        //go to currentOrders activity
-        Intent from_cust_order_to_current_order = new Intent(this, CurrentOrderActivity.class);
-        from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
-        startActivity(from_cust_order_to_current_order);
+
 
     }
 
@@ -175,7 +168,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
             String preferred_payment_method){
 
 
-
+        //-------------order initialization-------------------------------------------------
         DatabaseReference orderRef = mDatabaseRef.child("order").push();
         String orderUid = orderRef.getKey();
         Order newOrder = new Order( orderUid,
@@ -189,28 +182,37 @@ public class CustomerOrderActivity extends AppCompatActivity {
                                     "pending");
         newOrder.setDropoff_email(email);
         newOrder.setDropoff_address_detail(address_detail);
+        //-------------------------------------------------------
         final Order newOrderSaved = newOrder;
-
+        String loginEmail = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE)
+                .getString("curEmail",null);
+        //eamil for saving order into sharedPreference
+        final String finalLoginEmail = (loginEmail==null)?"guest":loginEmail;
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
-
-            String loginEmail;
 
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
                     System.out.println("Order could not be saved " + databaseError.getMessage());
                 } else {
-                    if(cur_email == null) {
-                        cur_email = "guest";
-                    }
+
 
 
                     CachedOrderPrefrence.saveOrderToAppByEmail(getApplicationContext(),
-                                                                cur_email,
+                                                                finalLoginEmail,
                                                                 newOrderSaved);
                     Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
-                                                                                        cur_email));
+                                                                finalLoginEmail));
                     System.out.println("Order successfully.");
+
+                    //if validations passed, display a success toast
+                    Toast.makeText(CustomerOrderActivity.this, "Order successfully placed.",
+                            Toast.LENGTH_SHORT).show();
+
+                    //go to currentOrders activity
+                    Intent from_cust_order_to_current_order = new Intent(CustomerOrderActivity.this, CurrentOrderActivity.class);
+                    from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    startActivity(from_cust_order_to_current_order);
                 }
             }
         });

@@ -138,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //get the Customer info in db
                 Customer loginUser = (Customer) dataSnapshot.getValue(Customer.class);
+                String curEmail = loginUser.getEmail();
 
                 //store object to sharedPreference
                 userInfo_Prefs = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
@@ -146,6 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                 String json = gson.toJson(loginUser);
                 prefsEditor.putString("userUID", userUid);
                 prefsEditor.putString("userObject", json);
+                prefsEditor.putString("curEmail",curEmail);
                 prefsEditor.apply();
 
                 //move to home page if succeeds

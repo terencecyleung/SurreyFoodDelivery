@@ -119,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences.Editor prefsEditor = userInfo_Prefs.edit();
         prefsEditor.putString("userUID", null);
         prefsEditor.putString("userObject", null);
+        prefsEditor.putString("curEmail",null);
         prefsEditor.apply();
     }
 

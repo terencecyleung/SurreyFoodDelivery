@@ -67,11 +67,14 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/current_order_list"
+    <ListView
+        android:id="@+id/order_detail"
         android:layout_width="match_parent"
+        android:layout_below="@id/headerView"
         android:layout_height="match_parent">
 
-    </RelativeLayout>
+
+
+    </ListView>
 
 </RelativeLayout>

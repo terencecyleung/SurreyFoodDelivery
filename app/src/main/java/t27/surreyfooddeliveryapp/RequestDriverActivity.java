@@ -7,17 +7,24 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
+import t27.surreyfooddeliveryapp.objectstodb.Order;
 
 public class RequestDriverActivity extends AppCompatActivity {
+    private String TAG = "RequestDriverActivity";
     SharedPreferences shared_preference;
 
     //input fields - restaurant info
@@ -187,7 +194,18 @@ public class RequestDriverActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
 
         //send driver request
-        requestDriver();
+        requestDriver(restaurant_name,
+        restaurant_phone,
+        restaurant_email,
+        restaurant_address,
+        ready_time,
+        total_amount,
+        customer_name,
+        customer_phone,
+        customer_address,
+        customer_address_detail,
+        order_detail,
+        preferred_payment_method);
 
         //go to currentOrders activity
         Intent from_rest_order_to_current_order = new Intent(this, CurrentOrderActivity.class);
@@ -196,7 +214,76 @@ public class RequestDriverActivity extends AppCompatActivity {
     }
 
     //TODO send order info to dispatcher/db
-    private void requestDriver() {
+    private void requestDriver(String restaurant_name,
+                               String restaurant_phone,
+                               String restaurant_email,
+                               String restaurant_address,
+                               String ready_time,
+                               String total_amount,
+                               String customer_name,
+                               String customer_phone,
+                               String customer_address,
+                               String customer_address_detail,
+                               String order_detail,
+                               String preferred_payment_method) {
+
+        DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference orderRef = mDatabaseRef.child("order").push();
+        String orderUid = orderRef.getKey();
+        //get the token for notification to store in the order in db
+        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
+        String token= tokenPre.getString("token",null);
+        //Log.d("tokenM",token);
+        Order newOrder = new Order( orderUid,
+                token,
+                "restaurant",
+                customer_name,
+                customer_phone,
+                customer_address,
+                order_detail,
+                preferred_payment_method,
+                "pending");
+        newOrder.setRest_name(restaurant_name);
+        newOrder.setRest_phone(restaurant_phone);
+        newOrder.setRest_email(restaurant_email);
+        newOrder.setRest_address(restaurant_address);
+        newOrder.setRest_ready_min(ready_time);
+        newOrder.setCust_total(total_amount);
+        newOrder.setDropoff_address_detail(customer_address_detail);
+        final Order newOrderSaved = newOrder;
+
+        //wont be null because rest has to login
+        final String loginEmail = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE)
+                            .getString("curEmail",null);
+
+        orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
+
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    System.out.println("Order could not be saved " + databaseError.getMessage());
+                } else {
+
+                    CachedOrderPrefrence.saveOrderToAppByEmail(getApplicationContext(),
+                            loginEmail,
+                            newOrderSaved);
+                    Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
+                            loginEmail));
+                    System.out.println("Order successfully.");
+
+                    //if validations passed, display a success toast
+                    Toast.makeText(RequestDriverActivity.this, "Order successfully placed.",
+                            Toast.LENGTH_SHORT).show();
+
+                    //go to currentOrders activity
+                    Intent from_cust_order_to_current_order = new Intent(RequestDriverActivity.this, CurrentOrderActivity.class);
+                    from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    startActivity(from_cust_order_to_current_order);
+                }
+            }
+        });
+
+
 
     }
 }

@@ -8,6 +8,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.net.ConnectException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import t27.surreyfooddeliveryapp.objectstodb.Order;
@@ -49,10 +51,31 @@ public class CachedOrderPrefrence {
         orders_al.add(newone);
 
 
+
         SharedPreferences.Editor prefsEditor = sp.edit();
         String newjson = gson.toJson(orders_al);
         prefsEditor.putString("orders", newjson);
         prefsEditor.apply();
+    }
+
+    public static boolean updateOrderByEmail(Context ApplicationContext,String email, Order oldone,Order newone) {
+        ArrayList<Order> orders_al;
+
+        SharedPreferences sp = getLocalRecordPreByEmail(ApplicationContext, email);
+        String orders_js = sp.getString("orders", null);
+        Gson gson = new Gson();
+
+        //nothing in the email
+        if (orders_js == null) {
+            return false;
+        } else {
+            //try to update
+            orders_al = gson.fromJson(orders_js, new TypeToken<ArrayList<Order>>() {
+            }.getType());
+        }
+
+        return orders_al.contains(oldone) && Collections.replaceAll(orders_al, oldone, newone);
+
     }
 
     /*
@@ -63,8 +86,12 @@ public class CachedOrderPrefrence {
         String orders_js = sp.getString("orders",null);
         Gson gson = new Gson();
 
-        ArrayList<Order>orders_al = gson.fromJson(orders_js, new TypeToken<ArrayList<Order>>() {
+        ArrayList<Order> orders_al = gson.fromJson(orders_js, new TypeToken<ArrayList<Order>>() {
         }.getType());
+
+        if(orders_al == null) {
+            orders_al = new ArrayList<Order>();
+        }
 
         return orders_al;
     }

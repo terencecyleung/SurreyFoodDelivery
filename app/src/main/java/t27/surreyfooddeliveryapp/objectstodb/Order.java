@@ -51,6 +51,7 @@ public class Order {
                      String order_detail,
                      String payment_method,
                      String state) {
+        this.orderUid = orderUid;
         this.notification_user_token = notification_user_token;
         this.orderType=  orderType;
         this.drop_cust_name = drop_cust_name;

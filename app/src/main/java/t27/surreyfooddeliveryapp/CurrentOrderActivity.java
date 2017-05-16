@@ -99,6 +99,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
         cur_email = (cur_email==null)?"guest":cur_email;
         orders = getOrderByEmail(getApplicationContext(),cur_email);
 
+        //new order goes first
         Collections.reverse(orders);
 
         ordersAdapter =
@@ -157,9 +158,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
 
     //order adapter for showing orders in listview
-    private class OrderAdapter extends ArrayAdapter<Order> {
-        public OrderAdapter(Context context, ArrayList<Order> users) {
-            super(context, 0, users);
+    public class OrderAdapter extends ArrayAdapter<Order> {
+        public OrderAdapter(Context context, ArrayList<Order> orders) {
+            super(context, 0, orders);
         }
 
         @Override

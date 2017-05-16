@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
+import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 import t27.surreyfooddeliveryapp.objectstodb.Order;
 
@@ -189,9 +190,13 @@ public class RequestDriverActivity extends AppCompatActivity {
             return;
         }
 
-        //if validations passed, display a success toast
-        Toast.makeText(RequestDriverActivity.this, "Driver request sent.",
-                Toast.LENGTH_SHORT).show();
+        if(!CheckConnection.isOnline(RequestDriverActivity.this)) {
+            Toast.makeText(RequestDriverActivity.this, "No Network",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
 
         //send driver request
         requestDriver(restaurant_name,
@@ -272,7 +277,7 @@ public class RequestDriverActivity extends AppCompatActivity {
                     System.out.println("Order successfully.");
 
                     //if validations passed, display a success toast
-                    Toast.makeText(RequestDriverActivity.this, "Order successfully placed.",
+                    Toast.makeText(RequestDriverActivity.this, "Driver request sent.",
                             Toast.LENGTH_SHORT).show();
 
                     //go to currentOrders activity

@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -131,6 +132,12 @@ public class RegisterActivity extends AppCompatActivity {
         /* address detail validation */
         if(!InputValidation.isValidAddress(addressDetail)){
             addressDetail = "";
+        }
+
+        if(!CheckConnection.isOnline(RegisterActivity.this)) {
+            Toast.makeText(RegisterActivity.this, "No Network",
+                    Toast.LENGTH_SHORT).show();
+            return;
         }
 
         register_account();

@@ -1,5 +1,9 @@
 package t27.surreyfooddeliveryapp.objectstodb;
 
+import com.google.firebase.database.ServerValue;
+
+import java.util.HashMap;
+
 /**
  * Created by Kent on 2017-05-10.
  */
@@ -40,6 +44,11 @@ public class Order {
     private String rest_address;
     private String rest_ready_min;
 
+    //driver addition
+    private String driverUID;
+
+    private HashMap<String, Object> timestampCreated;
+
     public Order(){}
 
     @Override
@@ -70,6 +79,10 @@ public class Order {
         this.order_detail = order_detail;
         this.payment_method = payment_method;
         this.state = state;
+
+        HashMap<String, Object> timestampNow = new HashMap<>();
+        timestampNow.put("timestamp", ServerValue.TIMESTAMP);
+        this.timestampCreated = timestampNow;
     }
 
 
@@ -205,6 +218,17 @@ public class Order {
         this.rest_ready_min = rest_ready_min;
     }
 
+    public void setOrderUid(String orderUid) {
+        this.orderUid = orderUid;
+    }
+
+    public String getDriverUID() {
+        return driverUID;
+    }
+
+    public void setDriverUID(String driverUID) {
+        this.driverUID = driverUID;
+    }
 
     @Override
     public String toString() {
@@ -226,6 +250,16 @@ public class Order {
                 ", rest_email='" + rest_email + '\'' +
                 ", rest_address='" + rest_address + '\'' +
                 ", rest_ready_min='" + rest_ready_min + '\'' +
+                ", driverUID='" + driverUID + '\'' +
+                ", timestampCreated=" + timestampCreated +
                 '}';
+    }
+
+    public HashMap<String, Object> getTimestampCreated() {
+        return timestampCreated;
+    }
+
+    public void setTimestampCreated(HashMap<String, Object> timestampCreated) {
+        this.timestampCreated = timestampCreated;
     }
 }

@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
+import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 import t27.surreyfooddeliveryapp.objectstodb.Order;
 
@@ -138,6 +139,12 @@ public class CustomerOrderActivity extends AppCompatActivity {
             return;
         }
 
+        if(!CheckConnection.isOnline(CustomerOrderActivity.this)) {
+            Toast.makeText(CustomerOrderActivity.this, "No Network",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         //get the token for notification to store in the order in db
         SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
         String token= tokenPre.getString("token",null);
@@ -186,8 +193,10 @@ public class CustomerOrderActivity extends AppCompatActivity {
         final Order newOrderSaved = newOrder;
         String loginEmail = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE)
                 .getString("curEmail",null);
-        //eamil for saving order into sharedPreference
+        //email for saving order into sharedPreference
         final String finalLoginEmail = (loginEmail==null)?"guest":loginEmail;
+
+        //TODO CHECK CONNECTION
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
 
             @Override

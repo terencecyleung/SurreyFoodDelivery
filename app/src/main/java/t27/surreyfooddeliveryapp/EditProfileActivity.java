@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
 
+import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -100,6 +101,12 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!InputValidation.isValidPhoneNumber(phone_updated)){
             phone_et.setError("Please enter a valid phone number");
             Toast.makeText(EditProfileActivity.this, "Please enter a valid phone number",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!CheckConnection.isOnline(EditProfileActivity.this)) {
+            Toast.makeText(EditProfileActivity.this, "No Network",
                     Toast.LENGTH_SHORT).show();
             return;
         }

@@ -220,7 +220,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
                     //go to currentOrders activity
                     Intent from_cust_order_to_current_order = new Intent(CustomerOrderActivity.this, CurrentOrderActivity.class);
-                    from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    //from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
                     startActivity(from_cust_order_to_current_order);
                 }
             }

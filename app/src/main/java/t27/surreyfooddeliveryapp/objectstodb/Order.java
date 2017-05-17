@@ -1,5 +1,6 @@
 package t27.surreyfooddeliveryapp.objectstodb;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.ServerValue;
 
 import java.util.HashMap;
@@ -31,6 +32,11 @@ public class Order {
     private String order_detail;
     private String payment_method;
     private String state;
+
+
+    //for displaying order on customer app
+    private String email_Account;
+    private String guest_notiToken;
 
     //customer additional
     private String dropoff_address_detail;
@@ -83,6 +89,22 @@ public class Order {
         HashMap<String, Object> timestampNow = new HashMap<>();
         timestampNow.put("timestamp", ServerValue.TIMESTAMP);
         this.timestampCreated = timestampNow;
+    }
+
+    public String getGuest_notiToken() {
+        return guest_notiToken;
+    }
+
+    public void setGuest_notiToken(String guest_notiToken) {
+        this.guest_notiToken = guest_notiToken;
+    }
+
+    public String getEmail_Account() {
+        return email_Account;
+    }
+
+    public void setEmail_Account(String email_Account) {
+        this.email_Account = email_Account;
     }
 
 
@@ -261,5 +283,16 @@ public class Order {
 
     public void setTimestampCreated(HashMap<String, Object> timestampCreated) {
         this.timestampCreated = timestampCreated;
+    }
+
+    @Exclude
+    public long getDateCreatedLong() {
+        Object o = timestampCreated.get("timestamp");
+        if( o instanceof Long)
+            return (Long)(o);
+        if( o instanceof Double)
+            return ((Double) o).longValue();
+        return (long)(o);
+
     }
 }

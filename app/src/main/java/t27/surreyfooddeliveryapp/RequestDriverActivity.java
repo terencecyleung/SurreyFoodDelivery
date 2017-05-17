@@ -190,32 +190,26 @@ public class RequestDriverActivity extends AppCompatActivity {
             return;
         }
 
-        if(!CheckConnection.isOnline(RequestDriverActivity.this)) {
+        if (!CheckConnection.isOnline(RequestDriverActivity.this)) {
             Toast.makeText(RequestDriverActivity.this, "No Network",
                     Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-
         //send driver request
         requestDriver(restaurant_name,
-        restaurant_phone,
-        restaurant_email,
-        restaurant_address,
-        ready_time,
-        total_amount,
-        customer_name,
-        customer_phone,
-        customer_address,
-        customer_address_detail,
-        order_detail,
-        preferred_payment_method);
-
-        //go to currentOrders activity
-        Intent from_rest_order_to_current_order = new Intent(this, CurrentOrderActivity.class);
-        from_rest_order_to_current_order.putExtra("caller_activity", "RequestDriverActivity");
-        startActivity(from_rest_order_to_current_order);
+                restaurant_phone,
+                restaurant_email,
+                restaurant_address,
+                ready_time,
+                total_amount,
+                customer_name,
+                customer_phone,
+                customer_address,
+                customer_address_detail,
+                order_detail,
+                preferred_payment_method);
     }
 
     //TODO send order info to dispatcher/db
@@ -236,10 +230,10 @@ public class RequestDriverActivity extends AppCompatActivity {
         DatabaseReference orderRef = mDatabaseRef.child("order").push();
         String orderUid = orderRef.getKey();
         //get the token for notification to store in the order in db
-        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
-        String token= tokenPre.getString("token",null);
+        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken", Context.MODE_PRIVATE);
+        String token = tokenPre.getString("token", null);
         //Log.d("tokenM",token);
-        Order newOrder = new Order( orderUid,
+        Order newOrder = new Order(orderUid,
                 token,
                 "restaurant",
                 customer_name,
@@ -255,11 +249,14 @@ public class RequestDriverActivity extends AppCompatActivity {
         newOrder.setRest_ready_min(ready_time);
         newOrder.setCust_total(total_amount);
         newOrder.setDropoff_address_detail(customer_address_detail);
-        final Order newOrderSaved = newOrder;
 
         //wont be null because rest has to login
-        final String loginEmail = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE)
-                            .getString("curEmail",null);
+        final String loginEmail = shared_preference
+                .getString("curEmail", null);
+
+        newOrder.setEmail_Account(loginEmail);
+        final Order newOrderSaved = newOrder;
+
 
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
 
@@ -269,9 +266,7 @@ public class RequestDriverActivity extends AppCompatActivity {
                     System.out.println("Order could not be saved " + databaseError.getMessage());
                 } else {
 
-                    CachedOrderPrefrence.saveOrderToAppByEmail(getApplicationContext(),
-                            loginEmail,
-                            newOrderSaved);
+
                     Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
                             loginEmail));
                     System.out.println("Order successfully.");
@@ -283,11 +278,13 @@ public class RequestDriverActivity extends AppCompatActivity {
                     //go to currentOrders activity
                     Intent from_cust_order_to_current_order = new Intent(RequestDriverActivity.this, CurrentOrderActivity.class);
                     from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    finish();
                     startActivity(from_cust_order_to_current_order);
+
+
                 }
             }
         });
-
 
 
     }

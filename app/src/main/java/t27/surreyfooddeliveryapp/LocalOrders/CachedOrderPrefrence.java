@@ -56,7 +56,7 @@ public class CachedOrderPrefrence {
         SharedPreferences.Editor prefsEditor = sp.edit();
         String newjson = gson.toJson(orders_al);
         prefsEditor.putString("orders", newjson);
-        prefsEditor.apply();
+        prefsEditor.commit();
     }
 
     public static boolean updateOrderByEmail(Context ApplicationContext,String email,Order newone) {
@@ -77,7 +77,7 @@ public class CachedOrderPrefrence {
                 SharedPreferences.Editor prefsEditor = sp.edit();
                 String newjson = gson.toJson(orders_al);
                 prefsEditor.putString("orders", newjson);
-                prefsEditor.apply();
+                prefsEditor.commit();
                 Log.d("upd", "updateOrderByEmail: world" +newjson);
                 return true;
 

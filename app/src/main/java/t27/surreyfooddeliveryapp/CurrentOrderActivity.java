@@ -20,7 +20,10 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
@@ -32,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,12 +52,16 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
 
     private String cur_email;
+    private String notif_tok;
+    private Query query;
+    private HashMap<String,Order> map_uid_to_order;
+    ArrayList<Order> order_list;
 
 
 
     private OrderAdapter ordersAdapter;
-    private ArrayList<Order> orders;
-    private HashMap<DatabaseReference,ValueEventListener> mapOfRefToOrderListener;
+    //private ArrayList<Order> orders;
+    //private HashMap<DatabaseReference,ValueEventListener> mapOfRefToOrderListener;
 
 
     @Override
@@ -61,100 +69,153 @@ public class CurrentOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order);
 
-        Intent_get_it = getIntent();
+        //Intent_get_it = getIntent();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
         //listener arrayList to detach listeners in onstop
-        mapOfRefToOrderListener = new HashMap<DatabaseReference,ValueEventListener>();
-
-
-        //icon_profile = (ImageView) findViewById(R.id.profile_icon);
-        //get back the customer object
+        //mapOfRefToOrderListener = new HashMap<DatabaseReference,ValueEventListener>();
+        orderList = (ListView) findViewById(R.id.order_detail);
         shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = shar_pre.getString("userObject", null);
+        cur_email = shar_pre
+                .getString("curEmail",null);
+        notif_tok = FirebaseInstanceId.getInstance().getToken();
 
-        //log in as customer or restaurant
-        //or logged in before
-        if (json != null) {
-            Customer cur_customer = gson.fromJson(json, Customer.class);
-            //get type
-            account_type = cur_customer.getAccountType();
-            //set button order text based on type(restaurant or customer)
-/*            if (account_type.equals("customer")) {
-                icon_profile.setImageResource(R.drawable.customericon);
-            } else if (account_type.equals("restaurant")) {
-                icon_profile.setImageResource(R.drawable.restauranticon);
-            }*/
-        }
+
+
+
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        orderList = (ListView) findViewById(R.id.order_detail);
-        cur_email = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE)
-                            .getString("curEmail",null);
-        //if not logged in, it is a guest
-        cur_email = (cur_email==null)?"guest":cur_email;
-        orders = getOrderByEmail(getApplicationContext(),cur_email);
+                /*//icon_profile = (ImageView) findViewById(R.id.profile_icon);
+                //get back the customer object
 
-        //new order goes first
-        Collections.reverse(orders);
+                Gson gson = new Gson();
+                String json = shar_pre.getString("userObject", null);
 
-        ordersAdapter =
-                new OrderAdapter(this,orders);
-        //Log.d("numorder", "onStart: " + orders.size());
-        // Set The Adapter
-        orderList.setAdapter(ordersAdapter);
-        //Log.d("prints", "onStart: "+ orders);
+                //log in as customer or restaurant
+                //or logged in before
+                if (json != null) {
+                    Customer cur_customer = gson.fromJson(json, Customer.class);
+                    //get type
+                    account_type = cur_customer.getAccountType();
+                    //set button order text based on type(restaurant or customer)
+*//*            if (account_type.equals("customer")) {
+                icon_profile.setImageResource(R.drawable.customericon);
+            } else if (account_type.equals("restaurant")) {
+                icon_profile.setImageResource(R.drawable.restauranticon);
+            }*//*
 
-        //db references related to orders stored before
-        for (Order oneorder :orders) {
-            DatabaseReference ref = mDatabaseRef.child("order").child(oneorder.getOrderUid()).child("state");
-            ValueEventListener valueListener = new OrderChangeListener(oneorder);
-            //listening to data base for state changes
-            ref.addValueEventListener(valueListener);
+                }
 
-            //keep a copy to listener arrayList for detaching later in onstop
-            mapOfRefToOrderListener.put(ref,valueListener);
-        }
+                cur_email = shar_pre
+                        .getString("curEmail",null);
+                //if not logged in, it is a guest
+                cur_email = (cur_email==null)?"guest":cur_email;
+                orders = CachedOrderPrefrence.getOrderByEmail(getApplicationContext(),cur_email);
+
+                //new order goes first
+                Collections.reverse(orders);*/
+            if(cur_email!=null) {
+                //logged in user
+                query = mDatabaseRef.child("order").orderByChild("email_Account").equalTo(cur_email);
+            } else {
+                //guest
+                query = mDatabaseRef.child("order").orderByChild("guest_notiToken").equalTo("guest_" + notif_tok);
+            }
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    GenericTypeIndicator<HashMap<String,Order>> type_orders_list =
+                            new GenericTypeIndicator<HashMap<String,Order>>() {};
+                    map_uid_to_order = dataSnapshot.getValue(type_orders_list);
+
+                    if(map_uid_to_order==null) {
+                        map_uid_to_order = new HashMap<String, Order>();
+                    }
+
+                    order_list = new ArrayList<Order>(map_uid_to_order.values());
+                    sortList(order_list);
+                    ordersAdapter = new OrderAdapter(CurrentOrderActivity.this,order_list);
+
+
+                    // Set The Adapter
+                    orderList.setAdapter(ordersAdapter);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+                //Log.d("numorder", "onStart: " + orders.size());
+
+                //Log.d("prints", "onStart: "+ orders);
+
+                //db references related to orders stored before
+                /*for (Order oneorder :orders) {
+                    DatabaseReference ref = mDatabaseRef.child("order").child(oneorder.getOrderUid()).child("state");
+                    ValueEventListener valueListener = new OrderChangeListener(oneorder);
+                    //listening to data base for state changes
+                    ref.addValueEventListener(valueListener);
+
+                    //keep a copy to listener arrayList for detaching later in onstop
+                    mapOfRefToOrderListener.put(ref,valueListener);
+                }*/
+
+
+
+
+
+
+
+
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        for (Map.Entry<DatabaseReference, ValueEventListener> entry : mapOfRefToOrderListener.entrySet())
+        /*for (Map.Entry<DatabaseReference, ValueEventListener> entry : mapOfRefToOrderListener.entrySet())
         {
             //detach listener
-            entry.getKey().removeEventListener(entry.getValue());
-        }
+
+            DatabaseReference re = entry.getKey();
+            ValueEventListener vl = entry.getValue();
+            re.removeEventListener(vl);
+        }*/
+
     }
 
-    public void logo_click(View view) {
+/*    public void logo_click(View view) {
         Intent newIntent = new Intent(this, HomeActivity.class);
         startActivity(newIntent);
-    }
-
-    @Override
-    public void onBackPressed() {
-
-
-        String caller_activity = Intent_get_it.getStringExtra("caller_activity");
-        if (caller_activity.equals("CustomerOrderActivity") || caller_activity.equals("RequestDriverActivity")) {
-            Intent backToHome_after_order = new Intent(this, HomeActivity.class);
-            backToHome_after_order.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(backToHome_after_order);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     public void profile_click(View view) {
         //TODO distiguish guest and customer and restaurant
         Intent fromCurrentOrderToProfile = new Intent(this, ProfileActivity.class);
         startActivity(fromCurrentOrderToProfile);
-    }
+    }*/
 
 
     //order adapter for showing orders in listview
@@ -190,6 +251,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
         }
     }
 
+/*
     public class OrderChangeListener implements ValueEventListener {
 
         Order oneorder;
@@ -206,8 +268,28 @@ public class CurrentOrderActivity extends AppCompatActivity {
                     oneorder.setState("finished");
                 }
                 //real time change to ui
-                CachedOrderPrefrence.updateOrderByEmail(getApplicationContext(),cur_email,oneorder);
-                ordersAdapter.notifyDataSetChanged();
+
+                new Thread(new Runnable() {
+                    public void run() {
+
+                        CachedOrderPrefrence.updateOrderByEmail(getApplicationContext(),cur_email,oneorder);
+
+                        //function below :to updatee the ordersAdapter of the list view
+
+                        //runOnUiThread();
+                        CurrentOrderActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ordersAdapter.notifyDataSetChanged();
+                                orderList.invalidateViews();
+                                ;
+                            }
+                        });
+                    }
+                }).start();
+
+
+
 
             }
 
@@ -217,5 +299,21 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 Toast.makeText(CurrentOrderActivity.this,"Fail to update",Toast.LENGTH_SHORT).show();
             }
     }
+
+*/
+private void sortList(ArrayList<Order> order_list) {
+    Collections.sort(order_list, new Comparator<Order>() {
+        @Override
+        public int compare(Order o1, Order o2) {
+            if(o1.getTimestampCreated()==null||o2.getTimestampCreated()==null) {
+                return 1;
+            }
+            Long otime1 = o1.getDateCreatedLong();
+            Long otime2 = o2.getDateCreatedLong();
+            return otime2.compareTo(otime1);
+        }
+    });
+}
+
 
 }

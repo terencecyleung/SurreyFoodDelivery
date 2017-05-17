@@ -176,6 +176,8 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
 
         //-------------order initialization-------------------------------------------------
+        String loginEmail = shared_preference
+                .getString("curEmail",null);
         DatabaseReference orderRef = mDatabaseRef.child("order").push();
         String orderUid = orderRef.getKey();
         Order newOrder = new Order( orderUid,
@@ -187,16 +189,20 @@ public class CustomerOrderActivity extends AppCompatActivity {
                                     order_detail,
                                     preferred_payment_method,
                                     "pending");
+        newOrder.setEmail_Account(loginEmail);
         newOrder.setDropoff_email(email);
         newOrder.setDropoff_address_detail(address_detail);
+        if(loginEmail == null) {
+            //palce order as a guest
+            newOrder.setGuest_notiToken("guest_"+token);
+        }
         //-------------------------------------------------------
         final Order newOrderSaved = newOrder;
-        String loginEmail = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE)
-                .getString("curEmail",null);
-        //email for saving order into sharedPreference
-        final String finalLoginEmail = (loginEmail==null)?"guest":loginEmail;
 
-        //TODO CHECK CONNECTION
+   /*     //email for saving order into sharedPreference
+        final String finalLoginEmail = (loginEmail==null)?"guest":loginEmail;*/
+
+
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
 
             @Override
@@ -204,24 +210,26 @@ public class CustomerOrderActivity extends AppCompatActivity {
                 if (databaseError != null) {
                     System.out.println("Order could not be saved " + databaseError.getMessage());
                 } else {
-
-
-
-                    CachedOrderPrefrence.saveOrderToAppByEmail(getApplicationContext(),
-                                                                finalLoginEmail,
-                                                                newOrderSaved);
-                    Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
-                                                                finalLoginEmail));
+                    //Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
+                    //finalLoginEmail));
                     System.out.println("Order successfully.");
 
                     //if validations passed, display a success toast
                     Toast.makeText(CustomerOrderActivity.this, "Order successfully placed.",
                             Toast.LENGTH_SHORT).show();
-
+                    /*CachedOrderPrefrence.saveOrderToAppByEmail(getApplicationContext(),
+                            finalLoginEmail,
+                            newOrderSaved);*/
                     //go to currentOrders activity
                     Intent from_cust_order_to_current_order = new Intent(CustomerOrderActivity.this, CurrentOrderActivity.class);
-                    //from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    finish();
                     startActivity(from_cust_order_to_current_order);
+
+
+
+
+
                 }
             }
         });

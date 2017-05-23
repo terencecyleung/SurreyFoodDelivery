@@ -30,7 +30,7 @@ import com.google.gson.Gson;
 
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
 
     // [START declare_auth]
@@ -76,11 +76,16 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        showProgressDialog();
+
         signIn();
+
+
     }
 
     private void signIn() {
         // [START sign_in_with_email]
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -117,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         }
+                        hideProgressDialog();
 
                     }
                 });
@@ -138,6 +144,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //get the Customer info in db
                 Customer loginUser = (Customer) dataSnapshot.getValue(Customer.class);
+                if(loginUser == null) {
+                    Toast.makeText(LoginActivity.this, "Invalid email or password.",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String curEmail = loginUser.getEmail();
 
                 //store object to sharedPreference

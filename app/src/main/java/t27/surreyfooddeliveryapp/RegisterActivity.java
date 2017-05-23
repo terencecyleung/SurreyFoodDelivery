@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
     private static final String TAG = "RegisterActivity";
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
@@ -150,6 +150,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     //registration function to authentication and database
     private void register_account() {
+        showProgressDialog();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -204,6 +205,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 finish();
                             }
                         }
+
+                        hideProgressDialog();
 
                         // ...
                     }

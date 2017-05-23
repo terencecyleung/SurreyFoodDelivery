@@ -28,7 +28,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class CustomerOrderActivity extends AppCompatActivity {
+public class CustomerOrderActivity extends BaseActivity {
     private String TAG = "CustomerOrderActivity";
     private DatabaseReference mDatabaseRef;
     private SharedPreferences shared_preference;
@@ -202,6 +202,8 @@ public class CustomerOrderActivity extends AppCompatActivity {
    /*     //email for saving order into sharedPreference
         final String finalLoginEmail = (loginEmail==null)?"guest":loginEmail;*/
 
+   showProgressDialog();
+
 
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
 
@@ -231,6 +233,9 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
 
                 }
+
+                hideProgressDialog();
+
             }
         });
 

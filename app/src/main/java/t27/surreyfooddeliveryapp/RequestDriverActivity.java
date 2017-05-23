@@ -24,7 +24,7 @@ import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 import t27.surreyfooddeliveryapp.objectstodb.Order;
 
-public class RequestDriverActivity extends AppCompatActivity {
+public class RequestDriverActivity extends BaseActivity {
     private String TAG = "RequestDriverActivity";
     SharedPreferences shared_preference;
 
@@ -257,6 +257,8 @@ public class RequestDriverActivity extends AppCompatActivity {
         newOrder.setEmail_Account(loginEmail);
         final Order newOrderSaved = newOrder;
 
+        showProgressDialog();
+
 
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
 
@@ -283,6 +285,7 @@ public class RequestDriverActivity extends AppCompatActivity {
 
 
                 }
+                hideProgressDialog();
             }
         });
 

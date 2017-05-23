@@ -13,4 +13,6 @@
     <string name="forget_pass_description">Enter your email ID below and a reset password email will be sent.</string>
     <string name="customer_order_btn_text">Order Now</string>
     <string name="resta_order_btn_text">Request Driver</string>
+
+    <string name="loading">Loading…</string>
 </resources>

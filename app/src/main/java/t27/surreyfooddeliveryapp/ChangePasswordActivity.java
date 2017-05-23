@@ -22,13 +22,10 @@ import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 
 public class ChangePasswordActivity extends AppCompatActivity {
-
     String TAG = "ChangePasswordActivity";
-
     EditText oldpass_et;
     EditText newpass_et;
     EditText newpass_et2;
-
     String oldpass;
     String newpass;
     String newpass2;
@@ -42,12 +39,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
         oldpass_et = (EditText) findViewById(R.id.edit_pass);
         newpass_et = (EditText) findViewById(R.id.edit_new_pass);
         newpass_et2 = (EditText) findViewById(R.id.edit_confirm_pass);
-
-
     }
 
     public void change_pass_click(View view) {
-
         if(!CheckConnection.isOnline(ChangePasswordActivity.this)) {
             Toast.makeText(ChangePasswordActivity.this, "No Network",
                     Toast.LENGTH_SHORT).show();
@@ -84,7 +78,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                         Toast.LENGTH_SHORT).show();
 
                                                 //----modify the object in sharedPreference
-                                                SharedPreferences shar_pre = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
+                                                SharedPreferences shar_pre = getApplicationContext()
+                                                        .getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
                                                 Gson gson = new Gson();
                                                 String json = shar_pre.getString("userObject", null);
 
@@ -126,14 +121,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Please enter identical new passwords",
                         Toast.LENGTH_SHORT).show();
-
             }
-
-
         }
-
-
-
-
     }
 }

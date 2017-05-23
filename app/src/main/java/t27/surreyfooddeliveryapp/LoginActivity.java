@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -38,12 +37,9 @@ public class LoginActivity extends BaseActivity {
     // [END declare_auth]
 
     SharedPreferences userInfo_Prefs;
-
     private DatabaseReference mDatabaseRef;
-
     EditText email_et;
     EditText password_et;
-
     String email;
     String password;
 
@@ -63,7 +59,6 @@ public class LoginActivity extends BaseActivity {
         email = email_et.getText().toString();
         password = password_et.getText().toString();
 
-
         if (!InputValidation.isValidEmail(email)) {
             ((EditText) findViewById(R.id.email_input)).setError("incorrect email");
             Toast.makeText(LoginActivity.this, "Incorrect email", Toast.LENGTH_SHORT).show();
@@ -77,10 +72,7 @@ public class LoginActivity extends BaseActivity {
         }
 
         showProgressDialog();
-
         signIn();
-
-
     }
 
     private void signIn() {
@@ -120,10 +112,9 @@ public class LoginActivity extends BaseActivity {
                                 Toast.makeText(LoginActivity.this, e.getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }
-
                         }
-                        hideProgressDialog();
 
+                        hideProgressDialog();
                     }
                 });
         // [END sign_in_with_email]
@@ -133,7 +124,6 @@ public class LoginActivity extends BaseActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
         final String userUid = user.getUid();
-
 
         //get user information from db and store to sharedPreference
         Query userInfo_query = mDatabaseRef.child("users").child(userUid);

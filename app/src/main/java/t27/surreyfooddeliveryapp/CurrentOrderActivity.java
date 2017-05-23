@@ -1,68 +1,47 @@
 package t27.surreyfooddeliveryapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.gson.Gson;
-
-import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
-import t27.surreyfooddeliveryapp.objectstodb.Customer;
-import t27.surreyfooddeliveryapp.objectstodb.Order;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import static t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence.getOrderByEmail;
+import t27.surreyfooddeliveryapp.objectstodb.Order;
 
 public class CurrentOrderActivity extends AppCompatActivity {
-    private Intent Intent_get_it;
     SharedPreferences shar_pre;
     //ImageView icon_profile;
     String account_type = null;
-
     private ListView orderList;
     private DatabaseReference mDatabaseRef;
-
     private String cur_email;
     private String notif_tok;
     private Query query;
     private HashMap<String,Order> map_uid_to_order;
     ArrayList<Order> order_list;
-
-
-
     private OrderAdapter ordersAdapter;
     //private ArrayList<Order> orders;
     //private HashMap<DatabaseReference,ValueEventListener> mapOfRefToOrderListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,20 +57,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         cur_email = shar_pre
                 .getString("curEmail",null);
         notif_tok = FirebaseInstanceId.getInstance().getToken();
-
-
-
-
-
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-
     }
 
     @Override
@@ -128,10 +98,12 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 Collections.reverse(orders);*/
             if(cur_email!=null) {
                 //logged in user
-                query = mDatabaseRef.child("order").orderByChild("email_Account").equalTo(cur_email);
+                query = mDatabaseRef.child("order").orderByChild("email_Account")
+                        .equalTo(cur_email);
             } else {
                 //guest
-                query = mDatabaseRef.child("order").orderByChild("guest_notiToken").equalTo("guest_" + notif_tok);
+                query = mDatabaseRef.child("order").orderByChild("guest_notiToken")
+                        .equalTo("guest_" + notif_tok);
             }
             query.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -148,10 +120,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
                     sortList(order_list);
                     ordersAdapter = new OrderAdapter(CurrentOrderActivity.this,order_list);
 
-
                     // Set The Adapter
                     orderList.setAdapter(ordersAdapter);
-
                 }
 
                 @Override
@@ -217,7 +187,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
         startActivity(fromCurrentOrderToProfile);
     }*/
 
-
     //order adapter for showing orders in listview
     public class OrderAdapter extends ArrayAdapter<Order> {
         public OrderAdapter(Context context, ArrayList<Order> orders) {
@@ -244,7 +213,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 tvDetail.setText(Html.fromHtml(description), TextView.BufferType.SPANNABLE);
                 tvStatus.setText(Html.fromHtml(status), TextView.BufferType.SPANNABLE);
             }
-
 
             // Return the completed view to render on screen
             return convertView;
@@ -301,19 +269,17 @@ public class CurrentOrderActivity extends AppCompatActivity {
     }
 
 */
-private void sortList(ArrayList<Order> order_list) {
-    Collections.sort(order_list, new Comparator<Order>() {
-        @Override
-        public int compare(Order o1, Order o2) {
-            if(o1.getTimestampCreated()==null||o2.getTimestampCreated()==null) {
-                return 1;
+    private void sortList(ArrayList<Order> order_list) {
+        Collections.sort(order_list, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                if(o1.getTimestampCreated()==null||o2.getTimestampCreated()==null) {
+                    return 1;
+                }
+                Long otime1 = o1.getDateCreatedLong();
+                Long otime2 = o2.getDateCreatedLong();
+                return otime2.compareTo(otime1);
             }
-            Long otime1 = o1.getDateCreatedLong();
-            Long otime2 = o2.getDateCreatedLong();
-            return otime2.compareTo(otime1);
-        }
-    });
-}
-
-
+        });
+    }
 }

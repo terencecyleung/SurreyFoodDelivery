@@ -7,11 +7,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.net.ConnectException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import t27.surreyfooddeliveryapp.objectstodb.Order;
 
@@ -50,9 +47,6 @@ public class CachedOrderPrefrence {
         }
 
         orders_al.add(newone);
-
-
-
         SharedPreferences.Editor prefsEditor = sp.edit();
         String newjson = gson.toJson(orders_al);
         prefsEditor.putString("orders", newjson);
@@ -83,10 +77,8 @@ public class CachedOrderPrefrence {
 
             }
         }
+
         return false;
-
-
-
     }
 
     /*
@@ -129,15 +121,14 @@ public class CachedOrderPrefrence {
             prefsEditor.apply();
             return true;
         }
-        return false;
 
+        return false;
     }
 
     public static String getOrdersJs(Context ApplicationContext,String email) {
         SharedPreferences sp = getLocalRecordPreByEmail(ApplicationContext,email);
         return sp.getString("orders",null);
     }
-
 }
 
 

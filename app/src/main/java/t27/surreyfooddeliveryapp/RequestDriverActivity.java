@@ -3,9 +3,6 @@ package t27.surreyfooddeliveryapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -86,7 +83,8 @@ public class RequestDriverActivity extends BaseActivity {
         super.onStart();
 
         //get back the customer object
-        shared_preference = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
+        shared_preference = getApplicationContext().getSharedPreferences(getString(R.string.User_info),
+                Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = shared_preference.getString("userObject", null);
         if (json != null) {
@@ -101,7 +99,6 @@ public class RequestDriverActivity extends BaseActivity {
             restaurant_phone_et.setText(cur_phone);
             restaurant_email_et.setText(cur_email);
             restaurant_address_et.setText(cur_address);
-
         }
     }
 
@@ -123,7 +120,8 @@ public class RequestDriverActivity extends BaseActivity {
         customer_address = customer_address_et.getText().toString();
         customer_address_detail = customer_address_detail_et.getText().toString();
         order_detail = order_detail_et.getText().toString();
-        preferred_payment_method_RadioButton = (RadioButton) findViewById(preferred_payment_method_RadioGroup.getCheckedRadioButtonId());
+        preferred_payment_method_RadioButton = (RadioButton) findViewById(
+                preferred_payment_method_RadioGroup.getCheckedRadioButtonId());
         preferred_payment_method = preferred_payment_method_RadioButton.getText().toString();
 
         //input validations
@@ -196,7 +194,6 @@ public class RequestDriverActivity extends BaseActivity {
             return;
         }
 
-
         //send driver request
         requestDriver(restaurant_name,
                 restaurant_phone,
@@ -230,7 +227,8 @@ public class RequestDriverActivity extends BaseActivity {
         DatabaseReference orderRef = mDatabaseRef.child("order").push();
         String orderUid = orderRef.getKey();
         //get the token for notification to store in the order in db
-        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken", Context.MODE_PRIVATE);
+        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",
+                Context.MODE_PRIVATE);
         String token = tokenPre.getString("token", null);
         //Log.d("tokenM",token);
         Order newOrder = new Order(orderUid,
@@ -267,10 +265,8 @@ public class RequestDriverActivity extends BaseActivity {
                 if (databaseError != null) {
                     System.out.println("Order could not be saved " + databaseError.getMessage());
                 } else {
-
-
-                    Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(getApplicationContext(),
-                            loginEmail));
+                    Log.d(TAG, "onComplete: " + CachedOrderPrefrence.getOrdersJs(
+                            getApplicationContext(), loginEmail));
                     System.out.println("Order successfully.");
 
                     //if validations passed, display a success toast
@@ -278,13 +274,14 @@ public class RequestDriverActivity extends BaseActivity {
                             Toast.LENGTH_SHORT).show();
 
                     //go to currentOrders activity
-                    Intent from_cust_order_to_current_order = new Intent(RequestDriverActivity.this, CurrentOrderActivity.class);
-                    from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
+                    Intent from_cust_order_to_current_order = new Intent(
+                            RequestDriverActivity.this, CurrentOrderActivity.class);
+                    from_cust_order_to_current_order.putExtra("caller_activity",
+                            "CustomerOrderActivity");
                     finish();
                     startActivity(from_cust_order_to_current_order);
-
-
                 }
+
                 hideProgressDialog();
             }
         });

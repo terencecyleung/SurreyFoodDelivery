@@ -32,7 +32,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void login_redirect() {
-        SharedPreferences userInfo_Prefs =  getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
+        SharedPreferences userInfo_Prefs =  getApplicationContext().getSharedPreferences(
+                getString(R.string.User_info), Context.MODE_PRIVATE);
         if(userInfo_Prefs.getString("userUID",null)!=null) {
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);

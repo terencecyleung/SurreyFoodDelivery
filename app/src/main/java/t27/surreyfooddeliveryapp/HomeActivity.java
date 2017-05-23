@@ -49,8 +49,6 @@ public class HomeActivity extends AppCompatActivity {
                 icon_profile.setImageResource(R.drawable.restauranticon);
             }
         }
-
-        //otherwise login as a guest
     }
 
     public void order_click(View view) {
@@ -61,7 +59,6 @@ public class HomeActivity extends AppCompatActivity {
             Intent fromHomeToRequestDriver = new Intent(this, RequestDriverActivity.class);
             startActivity(fromHomeToRequestDriver);
         }
-
     }
 
     public void profile_click(View view) {
@@ -70,6 +67,4 @@ public class HomeActivity extends AppCompatActivity {
         Intent fromHomeToProfile = new Intent(this,ProfileActivity.class);
         startActivity(fromHomeToProfile);
     }
-
-
 }

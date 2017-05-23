@@ -122,6 +122,4 @@ public class ProfileActivity extends AppCompatActivity {
         prefsEditor.putString("curEmail",null);
         prefsEditor.apply();
     }
-
-
 }

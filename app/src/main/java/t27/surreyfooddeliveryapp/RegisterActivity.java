@@ -1,9 +1,8 @@
 package t27.surreyfooddeliveryapp;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -126,7 +125,8 @@ public class RegisterActivity extends BaseActivity {
 
         /* address validation */
         if(!InputValidation.isValidAddress(address)){
-            address = "";
+            address_EditText.setError("Enter an address");
+            return;
         }
 
         /* address detail validation */
@@ -178,7 +178,6 @@ public class RegisterActivity extends BaseActivity {
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                         } else {
                             //store to the database
                             FirebaseUser user = task.getResult().getUser();
@@ -207,8 +206,6 @@ public class RegisterActivity extends BaseActivity {
                         }
 
                         hideProgressDialog();
-
-                        // ...
                     }
                 });
     }

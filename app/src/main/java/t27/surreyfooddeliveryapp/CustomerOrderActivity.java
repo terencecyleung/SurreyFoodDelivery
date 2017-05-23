@@ -3,33 +3,23 @@ package t27.surreyfooddeliveryapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
-import t27.surreyfooddeliveryapp.LocalOrders.CachedOrderPrefrence;
 import t27.surreyfooddeliveryapp.LocalOrders.CheckConnection;
 import t27.surreyfooddeliveryapp.objectstodb.Customer;
 import t27.surreyfooddeliveryapp.objectstodb.Order;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class CustomerOrderActivity extends BaseActivity {
-    private String TAG = "CustomerOrderActivity";
     private DatabaseReference mDatabaseRef;
     private SharedPreferences shared_preference;
     //input fields
@@ -74,7 +64,8 @@ public class CustomerOrderActivity extends BaseActivity {
         super.onStart();
 
         //get back the customer object
-        shared_preference = getApplicationContext().getSharedPreferences(getString(R.string.User_info), Context.MODE_PRIVATE);
+        shared_preference = getApplicationContext().getSharedPreferences(getString(R.string.User_info),
+                Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = shared_preference.getString("userObject", null);
         if (json != null) {
@@ -106,7 +97,8 @@ public class CustomerOrderActivity extends BaseActivity {
         address = address_et.getText().toString();
         address_detail = address_detail_et.getText().toString();
         order_detail = order_detail_et.getText().toString();
-        preferred_payment_method_RadioButton = (RadioButton) findViewById(preferred_payment_method_RadioGroup.getCheckedRadioButtonId());
+        preferred_payment_method_RadioButton = (RadioButton) findViewById(
+                preferred_payment_method_RadioGroup.getCheckedRadioButtonId());
         preferred_payment_method = preferred_payment_method_RadioButton.getText().toString();
 
 
@@ -146,7 +138,8 @@ public class CustomerOrderActivity extends BaseActivity {
         }
 
         //get the token for notification to store in the order in db
-        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences("notifToken",Context.MODE_PRIVATE);
+        SharedPreferences tokenPre = getApplicationContext().getSharedPreferences(
+                "notifToken",Context.MODE_PRIVATE);
         String token= tokenPre.getString("token",null);
         //Log.d("tokenM",token);
         //place order
@@ -158,11 +151,7 @@ public class CustomerOrderActivity extends BaseActivity {
                 address_detail,
                 order_detail,
                 preferred_payment_method);
-
-
-
     }
-
 
     //TODO send order info to dispatcher/db
     private void placeOrder(String token,
@@ -173,7 +162,6 @@ public class CustomerOrderActivity extends BaseActivity {
             String address_detail,
             String order_detail,
             String preferred_payment_method){
-
 
         //-------------order initialization-------------------------------------------------
         String loginEmail = shared_preference
@@ -202,8 +190,7 @@ public class CustomerOrderActivity extends BaseActivity {
    /*     //email for saving order into sharedPreference
         final String finalLoginEmail = (loginEmail==null)?"guest":loginEmail;*/
 
-   showProgressDialog();
-
+        showProgressDialog();
 
         orderRef.setValue(newOrder, new DatabaseReference.CompletionListener() {
 
@@ -227,15 +214,9 @@ public class CustomerOrderActivity extends BaseActivity {
                     from_cust_order_to_current_order.putExtra("caller_activity", "CustomerOrderActivity");
                     finish();
                     startActivity(from_cust_order_to_current_order);
-
-
-
-
-
                 }
 
                 hideProgressDialog();
-
             }
         });
 
@@ -247,8 +228,5 @@ public class CustomerOrderActivity extends BaseActivity {
         String order_detail,
         String payment_method,
         String state*/
-
-
-
     }
 }
